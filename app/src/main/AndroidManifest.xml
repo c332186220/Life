@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cxl.life">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:name=".base.LifeApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".login.LoginActivity"
+            android:label="@string/activity_login"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateVisible" />
+        <activity
+            android:name=".app.SettingActivity"
+            android:label="@string/action_settings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".app.wechat.WeChatActivity"
+            android:label="@string/activity_wechat"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".app.king.KingGloryActivity"
+            android:label="@string/activity_king_glory"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".app.voice.VoiceRecordActivity"
+            android:label="@string/activity_voice_record"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".app.JournalActivity"
+            android:label="@string/activity_journal_analysis"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".app.window.FloatWindowActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".app.drift.DriftActivity"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name=".service.MainService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name=".other.NetworkChangeReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

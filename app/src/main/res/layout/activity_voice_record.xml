@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_voice_record"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cxl.life.app.voice.VoiceRecordActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/voice_record_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/toolbar_theme">
+
+    </android.support.v7.widget.Toolbar>
+
+    <Button
+        android:id="@+id/voice_record_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/item_top_title_press"
+        android:text="按住  说话"
+        android:textColor="@color/white" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/voice_record_rlv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/voice_record_button"
+        android:layout_below="@+id/voice_record_toolbar"
+        android:layout_marginBottom="4dp" />
+
+</RelativeLayout>

@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">乐享生活</string>
+    <string name="activity_login">登录</string>
+    <string name="activity_wechat">微信</string>
+    <string name="activity_king_glory">王者荣耀</string>
+    <string name="activity_voice_record">语音</string>
+    <string name="activity_journal_analysis">博能日志解析</string>
+
+    <!-- 登录 -->
+    <string name="prompt_account">账户</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_sign_in_short">登录</string>
+
+
+    <string name="action_settings">设置</string>
+    <string name="action_search">搜索</string>
+    <string name="action_add">添加</string>
+    <string name="action_add_friend">添加朋友</string>
+    <string name="action_qrcode">扫一扫</string>
+    <string name="action_camera">拍照</string>
+    <string name="action_collect">收藏</string>
+    <string name="action_card">添加银行卡</string>
+    <string name="action_feed">意见反馈</string>
+    <!-- 王者荣耀 -->
+    <string name="action_list">列表</string>
+    <string name="action_grid">网格</string>
+    <string name="action_falls">瀑布</string>
+
+
+    <string name="navigation_drawer_open">打开</string>
+    <string name="navigation_drawer_close">关闭</string>
+    <string name="nav_menu1">王者荣耀</string>
+    <string name="nav_menu2">语音录制</string>
+    <string name="nav_menu3">日志解析</string>
+    <string name="nav_menu4">浮动布局</string>
+    <string name="about_us">关于我们</string>
+    <string name="nav_feedback">意见反馈</string>
+    <string name="nav_share">分享</string>
+    <string name="nav_setting">设置</string>
+
+    <!-- 默认取值 -->
+    <string name="default_image">图片</string>
+    <string name="default_load">内容加载失败</string>
+
+</resources>
