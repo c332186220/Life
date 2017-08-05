@@ -7,34 +7,38 @@ import android.animation.ObjectAnimator;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.ServiceConnection;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.os.SystemClock;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.TintTypedArray;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cxl.life.Util.AUtil;
+import com.cxl.life.Util.L;
 import com.cxl.life.Util.ScreenUtil;
 import com.cxl.life.app.JournalActivity;
+import com.cxl.life.app.draw.DrawLineActivity;
 import com.cxl.life.app.drift.DriftActivity;
 import com.cxl.life.app.king.KingGloryActivity;
 import com.cxl.life.app.SettingActivity;
@@ -53,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private RefreshReceiver receiver;//通知性广播
     private boolean isAnimation = false;
+    private RelativeLayout rl;//添加动态控件
+    private TextView show1, show2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +121,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         disperse3.setOnClickListener(this);
         disperse4 = (ImageView) findViewById(R.id.main_disperse4);
         disperse4.setOnClickListener(this);
+
+        rl = (RelativeLayout) findViewById(R.id.main_rl);
+
+        show1 = (TextView) findViewById(R.id.main_text_show1);
+        show2 = (TextView) findViewById(R.id.main_text_show2);
+        initChineseName();
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        addViewInRl();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        boolean gps = AUtil.gpsIsOpen(this);
+        L.e("gps打开状态:" + gps);
+        if (!gps) {
+            initGPS();
+        }
     }
 
     //监听抽屉里的菜单按钮
@@ -134,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(this, DriftActivity.class));
                 break;
             case R.id.nav_share:
-                Toast.makeText(this, "分享", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, DrawLineActivity.class));
                 break;
             case R.id.nav_feedback:
                 startActivity(new Intent(this, WeChatActivity.class));
@@ -270,7 +298,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      */
     private void showDispersed() {
         //设置动画时间
-        int duration = 1000;
+        int duration = 500;
         //动画距离,屏幕宽度的60%
         float distance = ScreenUtil.getScreenWidth(this) * 0.4f;
         //相邻ImageView运动角度式22.5度
@@ -330,5 +358,136 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         set.playTogether(animator0, animator00, animator11, animator12, animator21, animator22, animator31, animator32, animator41, animator42);
         set.start();
         isAnimation = true;
+    }
+
+    //添加动态view
+    private void addViewInRl() {
+        int wRl = rl.getWidth();
+        int hRl = rl.getHeight();
+        int vRl = wRl / 24;
+        int start = 2, end = 5;
+        TextView tv = new TextView(this);
+        tv.setLayoutParams(new RelativeLayout.LayoutParams((end - start) * vRl, hRl - 30));
+        tv.setBackgroundColor(Color.parseColor("#3beff4"));
+        tv.setPadding(0, 0, 0, 0);
+        rl.addView(tv);
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) tv.getLayoutParams();
+        TextView tv1 = (TextView) findViewById(R.id.main_rl_tv1);
+        L.e("总宽" + wRl + ",数字宽：" + tv1.getHeight());
+        params.setMargins(start * vRl + tv1.getHeight() / 2, 0, 0, 0);
+        params.addRule(RelativeLayout.CENTER_VERTICAL);
+    }
+
+    /**
+     * 汉字自动换行
+     */
+    private void initChineseName() {
+        String name = "刘德华、郭富城、黎明、张学友、周杰伦、赵丽颖、赵薇、郭晶晶、邱莹莹、关雎尔、樊胜美、裘千仞、令狐冲、欧阳娜娜";
+        show1.setText(name);
+        show2.setText(show1.getText().toString());
+        //获取高宽的监听，但这个会一直重复调用，故用完之后去除监听
+        show2.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                L.e("文本二初始化完毕！宽：" + show2.getWidth() + " 高：" + show2.getHeight());
+                show2.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                autoFormatText(show2);
+            }
+        });
+    }
+
+    //填充屏幕
+    private void autoFillText() {
+        String text = show2.getText().toString();//获取文本
+        Paint tvPaint = show2.getPaint();//获取画笔信息,包括字体大小等
+        float tvWidth = show2.getWidth() - show2.getPaddingLeft() - show2.getPaddingRight(); //控件可用宽度
+        //将原始文本按行拆分
+        String[] rawTextLines = text.replaceAll("\r", "").split("\n");
+        StringBuilder sbNewText = new StringBuilder();
+        for (String rawTextLine : rawTextLines) {
+            if (tvPaint.measureText(rawTextLine) <= tvWidth) {
+                //如果整行宽度在控件可用宽度之内，就不处理了
+                sbNewText.append(rawTextLine);
+            } else {
+                //如果整行宽度超过控件可用宽度，则按字符测量，在超过可用宽度的前一个字符处手动换行
+                float lineWidth = 0;
+                for (int cnt = 0; cnt != rawTextLine.length(); ++cnt) {
+                    char ch = rawTextLine.charAt(cnt);
+                    lineWidth += tvPaint.measureText(String.valueOf(ch));
+                    if (lineWidth <= tvWidth) {
+                        sbNewText.append(ch);
+                    } else {
+                        sbNewText.append("\n");
+                        lineWidth = 0;
+                        --cnt;
+                    }
+                }
+            }
+            sbNewText.append("\n");
+        }
+        //把结尾多余的\n去掉
+        if (!text.endsWith("\n")) {
+            sbNewText.deleteCharAt(sbNewText.length() - 1);
+        }
+        show2.setText(sbNewText.toString());
+    }
+
+    /**
+     * 根据汉字名称自动换行
+     */
+    private void autoFormatText(TextView textView) {
+        String text = textView.getText().toString();//获取文本
+        Paint tvPaint = textView.getPaint();//获取画笔信息,包括字体大小等
+        float tvWidth = textView.getWidth() - textView.getPaddingLeft() - textView.getPaddingRight(); //控件可用宽度
+        //将原始文本按行拆分
+        String[] rawTextNames = text.replaceAll("\r", "").split("、");
+        StringBuilder sbNewText = new StringBuilder();
+        float lineWidth = 0;//一条长度
+        for (int i = 0; i < rawTextNames.length; i++) {
+            String rawTextName;
+            if (i == rawTextNames.length - 1) {
+                rawTextName = rawTextNames[i];
+            } else {
+                rawTextName = rawTextNames[i] + "、";
+            }
+            //如果整行宽度超过控件可用宽度，则按字符测量，在超过可用宽度的前一个字符处手动换行
+            lineWidth += tvPaint.measureText(rawTextName);
+            if (lineWidth <= tvWidth) {
+                sbNewText.append(rawTextName);
+            } else {
+                sbNewText.append("\n");
+                lineWidth = 0;
+                --i;
+            }
+        }
+        textView.setText(sbNewText.toString());
+    }
+
+    /**
+     * 打开GPS设置
+     */
+    private void initGPS() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("提示");
+        dialog.setMessage("为方便您的使用，请先打开GPS");
+        dialog.setPositiveButton("设置", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // 跳转到手机设置界面，用户设置GPS
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivityForResult(intent, 1);
+            }
+        });
+        dialog.setNeutralButton("取消", null);
+        dialog.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            //gps打开返回结果
+            L.e("我先");
+        }
     }
 }
