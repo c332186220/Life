@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mykeyboard="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/keyboard_sv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/keyboard_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/edit_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/edit_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="400dp"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/edit_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+            <com.cxl.life.widget.MyKeyboard
+                android:id="@+id/edit_four"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                mykeyboard:xml="@xml/symbols_123" />
+        </LinearLayout>
+    </ScrollView>
+
+    <android.inputmethodservice.KeyboardView
+        android:id="@+id/keyboard_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/keyboard_bg"
+        android:focusable="true"
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp"
+        android:keyPreviewLayout="@layout/key_preview"
+        android:focusableInTouchMode="true"
+        android:keyBackground="@drawable/keyboard_key_bg"
+        android:keyTextColor="@color/white"
+        android:visibility="gone" />
+
+</RelativeLayout>
