@@ -3,7 +3,7 @@ package com.cxl.life.base;
 import android.app.Application;
 import android.content.res.Configuration;
 
-import com.cxl.life.Util.L;
+import com.cxl.life.util.L;
 import com.cxl.life.app.BaseActivity;
 
 /**

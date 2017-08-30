@@ -24,9 +24,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cxl.life.R;
-import com.cxl.life.Util.Constants;
-import com.cxl.life.Util.FileUtil;
-import com.cxl.life.Util.TimeUtil;
+import com.cxl.life.util.Constants;
+import com.cxl.life.util.FileUtil;
+import com.cxl.life.util.TimeUtil;
 import com.cxl.life.adapter.TextRecyclerAdapter;
 import com.cxl.life.app.BaseActivity;
 

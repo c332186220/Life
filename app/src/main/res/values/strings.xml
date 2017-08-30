@@ -3,6 +3,7 @@
     <string name="activity_login">登录</string>
     <string name="activity_wechat">微信</string>
     <string name="activity_king_glory">王者荣耀</string>
+    <string name="activity_layout">布局展示</string>
     <string name="activity_draw_line">绘制</string>
     <string name="activity_voice_record">语音</string>
     <string name="activity_journal_analysis">博能日志解析</string>

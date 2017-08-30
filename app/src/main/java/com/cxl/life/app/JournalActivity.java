@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cxl.life.R;
-import com.cxl.life.Util.Constants;
+import com.cxl.life.util.Constants;
 import com.cxl.life.adapter.ImageViewPagerAdapter;
 import com.cxl.life.app.pager.DepthPageTransformer;
 

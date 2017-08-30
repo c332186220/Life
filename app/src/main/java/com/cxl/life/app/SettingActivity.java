@@ -1,18 +1,21 @@
 package com.cxl.life.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.cxl.life.R;
+import com.cxl.life.app.about.AboutUsActivity;
 
 import java.lang.reflect.Method;
 
-public class SettingActivity extends BaseActivity {
+public class SettingActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,9 @@ public class SettingActivity extends BaseActivity {
     private void initView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.setting_toolbar);
         setSupportActionBar(toolbar);
+
+        findViewById(R.id.about_app).setOnClickListener(this);
+        findViewById(R.id.help_and_feedback).setOnClickListener(this);
     }
 
     @Override
@@ -68,6 +74,7 @@ public class SettingActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     /**
      * 重写了一个onMenuOpened()方法,通过返回反射的方法将MenuBuilder的setOptionalIconsVisible变量设置为true
      */
@@ -87,4 +94,15 @@ public class SettingActivity extends BaseActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.about_app:
+                startActivity(new Intent(this, AboutUsActivity.class));
+                break;
+            case R.id.help_and_feedback:
+
+                break;
+        }
+    }
 }

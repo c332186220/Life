@@ -25,6 +25,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -34,9 +37,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cxl.life.Util.AUtil;
-import com.cxl.life.Util.L;
-import com.cxl.life.Util.ScreenUtil;
+import com.cxl.life.app.layout.LayoutMainActivity;
+import com.cxl.life.util.AUtil;
+import com.cxl.life.util.L;
+import com.cxl.life.util.ScreenUtil;
 import com.cxl.life.app.JournalActivity;
 import com.cxl.life.app.draw.DrawLineActivity;
 import com.cxl.life.app.drift.DriftActivity;
@@ -46,9 +50,6 @@ import com.cxl.life.app.voice.VoiceRecordActivity;
 import com.cxl.life.app.wechat.WeChatActivity;
 import com.cxl.life.login.LoginActivity;
 import com.cxl.life.service.MainService;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private DrawerLayout drawer;//抽屉
@@ -138,11 +139,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onResume() {
         super.onResume();
-        boolean gps = AUtil.gpsIsOpen(this);
-        L.e("gps打开状态:" + gps);
-        if (!gps) {
-            initGPS();
-        }
+//        boolean gps = AUtil.gpsIsOpen(this);
+//        if (!gps) {
+//            initGPS();
+//        }
     }
 
     //监听抽屉里的菜单按钮
@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(this, JournalActivity.class));
                 break;
             case R.id.nav_menu4:
-                startActivity(new Intent(this, DriftActivity.class));
+                startActivity(new Intent(this, LayoutMainActivity.class));
                 break;
             case R.id.nav_share:
                 startActivity(new Intent(this, DrawLineActivity.class));
@@ -436,7 +436,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      * 根据汉字名称自动换行
      */
     private void autoFormatText(TextView textView) {
-        String text = textView.getText().toString();//获取文本
+        String text = textView.getText().toString();//获取文本(联想展示会获取到自动换行里面的回车)
         Paint tvPaint = textView.getPaint();//获取画笔信息,包括字体大小等
         float tvWidth = textView.getWidth() - textView.getPaddingLeft() - textView.getPaddingRight(); //控件可用宽度
         //将原始文本按行拆分
@@ -460,7 +460,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 --i;
             }
         }
-        textView.setText(sbNewText.toString());
+        String s1 = sbNewText.toString();
+        String s2 = "周杰伦";
+        if (s1.contains(s2)) {
+            int index = s1.indexOf(s2);
+            SpannableString spannableString = new SpannableString(s1);
+            spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#303F9F")), index, index + s2.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            textView.setText(spannableString);
+        } else {
+            textView.setText(s1);
+        }
     }
 
     /**

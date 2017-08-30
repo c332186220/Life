@@ -1,4 +1,4 @@
-package com.cxl.life.Util;
+package com.cxl.life.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;

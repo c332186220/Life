@@ -1,12 +1,11 @@
 package com.cxl.life.app.voice;
 
 import android.media.MediaRecorder;
-import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
 
-import com.cxl.life.Util.Constants;
-import com.cxl.life.Util.TimeUtil;
+import com.cxl.life.util.Constants;
+import com.cxl.life.util.TimeUtil;
 
 import java.io.File;
 import java.io.IOException;

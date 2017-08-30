@@ -11,6 +11,8 @@
     <style name="AppTheme.NoActionBar" parent="AppTheme.Base">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
+        <item name="android:windowBackground">@mipmap/welcome_bg</item>
     </style>
 
     <style name="AppTheme" parent="AppTheme.Base">
@@ -69,6 +71,11 @@
         <!--设置不覆盖锚点-->
         <item name="overlapAnchor">false</item>
 
+    </style>
+
+    <style name="AnimationFade">
+        <item name="android:windowEnterAnimation">@anim/keyboard_enter</item>
+        <item name="android:windowExitAnimation">@anim/keyboard_exit</item>
     </style>
 
 </resources>

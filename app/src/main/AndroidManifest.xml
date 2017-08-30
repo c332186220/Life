@@ -21,8 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:launchMode="singleTask"
+            android:name=".base.WelcomeActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,6 +30,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask" />
         <activity
             android:name=".login.LoginActivity"
             android:label="@string/activity_login"
@@ -78,7 +81,15 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".app.draw.DrawLineActivity"></activity>
+        <activity android:name=".app.draw.DrawLineActivity" />
+        <activity
+            android:name=".app.about.AboutUsActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".app.layout.LayoutMainActivity" />
+        <activity
+            android:name=".app.layout.ContainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

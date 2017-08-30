@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-import com.cxl.life.Util.NetUtil;
+import com.cxl.life.util.NetUtil;
 
 public class NetworkChangeReceiver extends BroadcastReceiver {
     public NetworkChangeReceiver() {

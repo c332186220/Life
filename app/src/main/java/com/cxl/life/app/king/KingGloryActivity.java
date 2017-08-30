@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.cxl.life.R;
-import com.cxl.life.Util.TestUtil;
+import com.cxl.life.util.TestUtil;
 import com.cxl.life.adapter.KingRecyclerAdapter;
 import com.cxl.life.adapter.KingRecyclerFallsAdapter;
 import com.cxl.life.adapter.KingRecyclerGridAdapter;
@@ -112,7 +112,7 @@ public class KingGloryActivity extends BaseActivity {
      */
     private void initGridStyle() {
         KingRecyclerGridAdapter adapter = new KingRecyclerGridAdapter(this, list);
-        recyclerView.setAdapter(adapter);
+//        recyclerView.setAdapter(adapter);
         //设置gridview的样式
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
@@ -127,7 +127,7 @@ public class KingGloryActivity extends BaseActivity {
      */
     private void initFallsStyle() {
         KingRecyclerFallsAdapter adapter = new KingRecyclerFallsAdapter(this, list);
-        recyclerView.setAdapter(adapter);
+//        recyclerView.setAdapter(adapter);
         //设置瀑布流的样式
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));//设置水平垂直
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));

@@ -3,7 +3,7 @@ package com.cxl.life.app;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 
-import com.cxl.life.Util.L;
+import com.cxl.life.util.L;
 
 /**
  * Created by cxl on 2017/7/13.
