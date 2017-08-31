@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/chinese_title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="3dp"
+            android:text="两端对齐："
+            android:textColor="@color/black"
+            android:textSize="@dimen/body_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/chinese_name1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/chinese_title1"
+            android:text="不一样的地方,不忘初心！"
+            android:textColor="@color/body_text"
+            android:textSize="@dimen/body_size" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:text="单个名字不换行，点击拨打电话"
+        android:textColor="@color/body_text_hint" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp">
+
+        <TextView
+            android:id="@+id/chinese_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="3dp"
+            android:text="处理跨行："
+            android:textColor="@color/black"
+            android:textSize="@dimen/body_size"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/chinese_name2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/chinese_title2"
+            android:background="@color/body_text_content"
+            android:text="不一样的地方,不忘初心！"
+            android:textColor="@color/body_text"
+            android:textSize="@dimen/body_size" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/chinese_title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="3dp"
+            android:text="影星："
+            android:textColor="@color/black"
+            android:textSize="@dimen/body_size"
+            android:textStyle="bold" />
+
+        <com.cxl.life.widget.FlowLayout
+            android:id="@+id/chinese_name3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/chinese_title3"
+            android:background="@color/body_text_content" />
+
+    </RelativeLayout>
+
+</LinearLayout>

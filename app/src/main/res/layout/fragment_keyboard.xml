@@ -19,25 +19,35 @@
                 android:id="@+id/edit_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="普通键盘"
                 android:inputType="text" />
+
+            <com.cxl.life.widget.MyKeyboardSwitch
+                android:id="@+id/edit_five"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="数字字母切换键盘" />
 
             <EditText
                 android:id="@+id/edit_two"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="400dp"
+                android:layout_marginTop="350dp"
+                android:hint="数字键盘"
                 android:inputType="text" />
 
             <EditText
                 android:id="@+id/edit_three"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:hint="普通键盘(数字)"
+                android:inputType="number" />
 
             <com.cxl.life.widget.MyKeyboard
                 android:id="@+id/edit_four"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="数字键盘(带上托功能)"
                 mykeyboard:xml="@xml/symbols_123" />
         </LinearLayout>
     </ScrollView>
@@ -50,12 +60,12 @@
         android:layout_centerHorizontal="true"
         android:background="@color/keyboard_bg"
         android:focusable="true"
-        android:paddingBottom="3dp"
-        android:paddingTop="3dp"
-        android:keyPreviewLayout="@layout/key_preview"
         android:focusableInTouchMode="true"
         android:keyBackground="@drawable/keyboard_key_bg"
+        android:keyPreviewLayout="@layout/key_preview"
         android:keyTextColor="@color/white"
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp"
         android:visibility="gone" />
 
 </RelativeLayout>

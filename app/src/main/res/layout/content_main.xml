@@ -139,25 +139,6 @@
         android:layout_marginTop="30dp"
         android:background="#5832fd" />
 
-    <TextView
-        android:id="@+id/main_text_show1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/main_rl"
-        android:layout_marginTop="10dp"
-        android:text="不一样的地方,不忘初心！"
-        android:textSize="17sp" />
-
-    <TextView
-        android:id="@+id/main_text_show2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/main_text_show1"
-        android:layout_marginTop="10dp"
-        android:text="不一样的地方,不忘初心！"
-        android:background="@color/body_text_content"
-        android:textSize="17sp" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

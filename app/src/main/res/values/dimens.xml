@@ -15,4 +15,5 @@
 
     <!-- 每一条的标题文字大小 -->
     <dimen name="item_title_size">18sp</dimen>
+    <dimen name="body_size">15sp</dimen>
 </resources>

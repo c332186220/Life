@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:text="多样化文本"
+        android:textColor="@color/body_text_hint" />
+
+    <TextView
+        android:id="@+id/rich_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/chinese_title1"
+        android:text="不一样的地方,不忘初心！"
+        android:textColor="@color/body_text"
+        android:textSize="@dimen/body_size" />
+
+
+</LinearLayout>

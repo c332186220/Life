@@ -53,6 +53,16 @@ public class ContainActivity extends AppCompatActivity {
                 transaction.replace(R.id.contain_fl, fragment);
                 transaction.commit();
                 break;
+            case "3":
+                fragment = new ChineseNameFragment();
+                transaction.replace(R.id.contain_fl, fragment);
+                transaction.commit();
+                break;
+            case "4":
+                fragment = new RichTextFragment();
+                transaction.replace(R.id.contain_fl, fragment);
+                transaction.commit();
+                break;
         }
     }
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.location.LocationManager;
 import android.net.Uri;
 
@@ -71,4 +72,37 @@ public class AUtil {
         }
         return 0;
     }
+
+    /**
+     * 调用拨号界面
+     *
+     * @param phone 电话号码
+     */
+    public static void call(Context context, String phone) {
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 是否支持电话
+     */
+    public static boolean isSupportCall(Context context) {
+        PackageManager pm = context.getPackageManager();
+        // 获取是否支持电话
+        return pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
+    }
+
+    /**
+     * 判断当前设备是手机还是平板
+     *
+     * @return 平板返回 True，手机返回 False
+     */
+    public static boolean isPad(Context context) {
+        return (context.getResources().getConfiguration().screenLayout
+                & Configuration.SCREENLAYOUT_SIZE_MASK)
+                >= Configuration.SCREENLAYOUT_SIZE_LARGE;
+    }
+
+
 }

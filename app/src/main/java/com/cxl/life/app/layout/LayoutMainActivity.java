@@ -44,7 +44,7 @@ public class LayoutMainActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.layout_rlv);
         list = TestUtil.getLayoutTitle();
-        int height = ScreenUtil.getScreenWidth(this) / 3 - ScreenUtil.dp2px(this, 6 * 2);
+        int height = ScreenUtil.getScreenWidth(this) / 3 - ScreenUtil.dpTopx(this, 6 * 2);
         adapter = new LayoutItemAdapter(this, list, height);
         //设置gridview的样式
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
@@ -66,6 +66,7 @@ public class LayoutMainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, DriftActivity.class));
                 break;
             case 1:
+            default:
                 Intent intent = new Intent(this, ContainActivity.class);
                 intent.putExtra("from", list.get(position));
                 startActivity(intent);

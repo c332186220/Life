@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private RefreshReceiver receiver;//通知性广播
     private boolean isAnimation = false;
     private RelativeLayout rl;//添加动态控件
-    private TextView show1, show2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,10 +123,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         disperse4.setOnClickListener(this);
 
         rl = (RelativeLayout) findViewById(R.id.main_rl);
-
-        show1 = (TextView) findViewById(R.id.main_text_show1);
-        show2 = (TextView) findViewById(R.id.main_text_show2);
-        initChineseName();
     }
 
     @Override
@@ -376,100 +371,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         L.e("总宽" + wRl + ",数字宽：" + tv1.getHeight());
         params.setMargins(start * vRl + tv1.getHeight() / 2, 0, 0, 0);
         params.addRule(RelativeLayout.CENTER_VERTICAL);
-    }
-
-    /**
-     * 汉字自动换行
-     */
-    private void initChineseName() {
-        String name = "刘德华、郭富城、黎明、张学友、周杰伦、赵丽颖、赵薇、郭晶晶、邱莹莹、关雎尔、樊胜美、裘千仞、令狐冲、欧阳娜娜";
-        show1.setText(name);
-        show2.setText(show1.getText().toString());
-        //获取高宽的监听，但这个会一直重复调用，故用完之后去除监听
-        show2.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                L.e("文本二初始化完毕！宽：" + show2.getWidth() + " 高：" + show2.getHeight());
-                show2.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                autoFormatText(show2);
-            }
-        });
-    }
-
-    //填充屏幕
-    private void autoFillText() {
-        String text = show2.getText().toString();//获取文本
-        Paint tvPaint = show2.getPaint();//获取画笔信息,包括字体大小等
-        float tvWidth = show2.getWidth() - show2.getPaddingLeft() - show2.getPaddingRight(); //控件可用宽度
-        //将原始文本按行拆分
-        String[] rawTextLines = text.replaceAll("\r", "").split("\n");
-        StringBuilder sbNewText = new StringBuilder();
-        for (String rawTextLine : rawTextLines) {
-            if (tvPaint.measureText(rawTextLine) <= tvWidth) {
-                //如果整行宽度在控件可用宽度之内，就不处理了
-                sbNewText.append(rawTextLine);
-            } else {
-                //如果整行宽度超过控件可用宽度，则按字符测量，在超过可用宽度的前一个字符处手动换行
-                float lineWidth = 0;
-                for (int cnt = 0; cnt != rawTextLine.length(); ++cnt) {
-                    char ch = rawTextLine.charAt(cnt);
-                    lineWidth += tvPaint.measureText(String.valueOf(ch));
-                    if (lineWidth <= tvWidth) {
-                        sbNewText.append(ch);
-                    } else {
-                        sbNewText.append("\n");
-                        lineWidth = 0;
-                        --cnt;
-                    }
-                }
-            }
-            sbNewText.append("\n");
-        }
-        //把结尾多余的\n去掉
-        if (!text.endsWith("\n")) {
-            sbNewText.deleteCharAt(sbNewText.length() - 1);
-        }
-        show2.setText(sbNewText.toString());
-    }
-
-    /**
-     * 根据汉字名称自动换行
-     */
-    private void autoFormatText(TextView textView) {
-        String text = textView.getText().toString();//获取文本(联想展示会获取到自动换行里面的回车)
-        Paint tvPaint = textView.getPaint();//获取画笔信息,包括字体大小等
-        float tvWidth = textView.getWidth() - textView.getPaddingLeft() - textView.getPaddingRight(); //控件可用宽度
-        //将原始文本按行拆分
-        String[] rawTextNames = text.replaceAll("\r", "").split("、");
-        StringBuilder sbNewText = new StringBuilder();
-        float lineWidth = 0;//一条长度
-        for (int i = 0; i < rawTextNames.length; i++) {
-            String rawTextName;
-            if (i == rawTextNames.length - 1) {
-                rawTextName = rawTextNames[i];
-            } else {
-                rawTextName = rawTextNames[i] + "、";
-            }
-            //如果整行宽度超过控件可用宽度，则按字符测量，在超过可用宽度的前一个字符处手动换行
-            lineWidth += tvPaint.measureText(rawTextName);
-            if (lineWidth <= tvWidth) {
-                sbNewText.append(rawTextName);
-            } else {
-                sbNewText.append("\n");
-                lineWidth = 0;
-                --i;
-            }
-        }
-        String s1 = sbNewText.toString();
-        String s2 = "周杰伦";
-        if (s1.contains(s2)) {
-            int index = s1.indexOf(s2);
-            SpannableString spannableString = new SpannableString(s1);
-            spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#303F9F")), index, index + s2.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            textView.setText(spannableString);
-        } else {
-            textView.setText(s1);
-        }
     }
 
     /**

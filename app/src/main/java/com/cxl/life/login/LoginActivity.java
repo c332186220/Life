@@ -3,6 +3,7 @@ package com.cxl.life.login;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,12 +11,14 @@ import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,6 +71,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
         Button signIn = (Button) findViewById(R.id.action_sign_in_button);
         signIn.setOnClickListener(this);
+        RelativeLayout outLayout = (RelativeLayout) findViewById(R.id.activity_login);
+        autoScrollView(outLayout, signIn);
     }
 
     @Override
@@ -161,5 +166,36 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 }
             }
         }, 20);
+    }
+
+    /**
+     * 软键盘遮挡点击按钮处理
+     *
+     * @param root         最外层的View
+     * @param scrollToView 不想被遮挡的View,会移动到这个Veiw的可见位置
+     */
+    private void autoScrollView(final View root, final View scrollToView) {
+        root.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                Rect rect = new Rect();
+                //获取root在窗体的可视区域
+                root.getWindowVisibleDisplayFrame(rect);
+                //获取root在窗体的不可视区域高度(被遮挡的高度)
+                int rootInvisibleHeight = root.getRootView().getHeight() - rect.bottom;
+                //若不可视区域高度大于150，则键盘显示
+                if (rootInvisibleHeight > 150) {
+                    int[] location = new int[2];
+                    //获取scrollToView在窗体的坐标
+                    scrollToView.getLocationInWindow(location);
+                    //计算root滚动高度，使scrollToView在可见区域的底部
+                    int srollHeight = (location[1] + scrollToView.getHeight()) - rect.bottom;
+                    root.scrollTo(0, srollHeight);
+                } else {
+                    //键盘隐藏
+                    root.scrollTo(0, 0);
+                }
+            }
+        });
     }
 }

@@ -19,7 +19,7 @@ public class TestUtil {
             "亚瑟", "阿轲", "姜子牙", "周瑜", "老夫子", "嬴政", "曹操", "庄周", "张良", "钟无艳", "芈月", "露娜", "廉颇", "白起", "张飞", "刘备", "兰陵王", "娜可露露", "李白", "钟馗", "李元芳", "刘邦", "不知火舞"};
     private static int[] king2 = new int[]{182, 187, 191, 192, 190, 180, 186, 178, 177, 163, 132, 183, 126, 184, 140, 174, 142, 135, 169, 114, 152, 107, 154, 133, 150, 108, 112, 130, 168, 141, 129, 106, 127, 109, 118, 136, 115, 123, 167, 111, 134,
             144, 119, 166, 116, 148, 124, 139, 110, 128, 113, 156, 117, 121, 146, 105, 120, 171, 170, 153, 162, 131, 175, 173, 149, 157};
-    public static Map<String, String> layoutTitle;
+    public static HashMap<String, String> layoutTitle;
 
     public static List<KingGlory> getKingGlory() {
         List<KingGlory> list = new ArrayList<>();
@@ -107,11 +107,18 @@ public class TestUtil {
     public static List<String> getLayoutTitle() {
         List<String> titleList = new ArrayList<>();
         layoutTitle = new HashMap<>();
+        layoutTitle.put("富文本", "4");
+        layoutTitle.put("中文名跨行", "3");
         layoutTitle.put("自定义键盘", "2");
-        layoutTitle.put("浮动布局", "1");
-        for (String title : layoutTitle.keySet()) {
-            titleList.add(title);
+
+//        for (String title : layoutTitle.keySet()) {
+//            titleList.add(title);
+//        }
+        titleList.add("浮动布局");
+        for (Map.Entry<String, String> entry : layoutTitle.entrySet()) {
+            titleList.add(entry.getKey());
         }
+        layoutTitle.put("浮动布局", "1");
         return titleList;
     }
 
