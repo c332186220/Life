@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+
+    <dbname value="life" />
+    <version value="2" />
+
+    <list>
+        <mapping class="com.cxl.life.bean.Attendance" />
+    </list>
+
+</litepal>

@@ -1,6 +1,9 @@
 package com.cxl.life.util;
 
 import android.app.PendingIntent;
+import android.bluetooth.BluetoothAdapter;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -94,6 +97,23 @@ public class AUtil {
     }
 
     /**
+     * 是否支持蓝牙
+     */
+    public static boolean isSupportBluetooth() {
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        return mBluetoothAdapter != null;
+    }
+
+    /**
+     * 蓝牙是否打开
+     */
+    public static boolean bluetoothIsOpen() {
+        //获取蓝牙适配器
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        return mBluetoothAdapter.isEnabled();
+    }
+
+    /**
      * 判断当前设备是手机还是平板
      *
      * @return 平板返回 True，手机返回 False
@@ -104,5 +124,16 @@ public class AUtil {
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
+    /**
+     * 实现文本复制功能
+     * @param content 文本
+     */
+    public static void copy(Context context,String content){
+        // 得到剪贴板管理器
+        ClipboardManager cmb = (ClipboardManager)context.getSystemService(Context.CLIPBOARD_SERVICE);
+        // 创建普通字符型ClipData
+        ClipData mClipData = ClipData.newPlainText("Label",content);
+        cmb.setPrimaryClip(mClipData);
+    }
 
 }

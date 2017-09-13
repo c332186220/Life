@@ -20,6 +20,7 @@
         <item name="windowNoTitle">true</item>
 
         <item name="android:windowBackground">@color/body_background</item>
+        <item name="android:textColor">@color/body_text</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -76,6 +77,27 @@
     <style name="AnimationFade">
         <item name="android:windowEnterAnimation">@anim/keyboard_enter</item>
         <item name="android:windowExitAnimation">@anim/keyboard_exit</item>
+    </style>
+
+    <style name="SwitchButtonStyle">
+        <item name="android:paddingLeft">13dp</item>
+        <item name="android:paddingRight">13dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <style name="ListItemStyle">
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingTop">11dp</item>
+        <item name="android:paddingBottom">11dp</item>
+    </style>
+
+    <style name="ItemStyle">
+        <item name="android:paddingLeft">@dimen/item_padding_left_right</item>
+        <item name="android:paddingRight">@dimen/item_padding_left_right</item>
+        <item name="android:paddingTop">@dimen/item_padding_up_down</item>
+        <item name="android:paddingBottom">@dimen/item_padding_up_down</item>
     </style>
 
 </resources>

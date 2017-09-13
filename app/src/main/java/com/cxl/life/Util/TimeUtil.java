@@ -1,6 +1,11 @@
 package com.cxl.life.util;
 
+import android.text.TextUtils;
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -11,6 +16,7 @@ import java.util.Locale;
 public class TimeUtil {
     private static SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault());
     private static SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+    private static SimpleDateFormat sdf3 = new SimpleDateFormat("M/d/yy H:mm", Locale.getDefault());
 
     /**
      * 返回当前时间的格式为 yyyy-MM-dd HH:mm:ss
@@ -28,6 +34,65 @@ public class TimeUtil {
                 break;
         }
         return time;
+    }
+
+
+    /**
+     * 字符串转时间戳
+     *
+     * @param time 字符串
+     * @return
+     */
+    public static long stringToLong(String time, int type) {
+        Date date;
+        long simpleTime;
+        try {
+            switch (type) {
+                case 3:
+                    date = sdf3.parse(time);
+                    break;
+                default:
+                    date = new Date();
+                    break;
+            }
+            simpleTime = date.getTime();
+        } catch (ParseException e) {
+            simpleTime = System.currentTimeMillis();
+        }
+        return simpleTime;
+    }
+
+    /**
+     * 时间戳转化为日期
+     */
+    public static String longToString(long longTime, int type) {
+        if (longTime == 0) {
+            longTime = System.currentTimeMillis();
+        }
+        String time;
+        switch (type) {
+            case 3:
+                time = sdf3.format(longTime);
+                break;
+            default:
+                time = sdf2.format(longTime);
+                break;
+        }
+        return time;
+    }
+
+
+    /**
+     * 时间戳转换为星期
+     */
+    public static int longToWeek(long longTime) {
+        if (longTime == 0) {
+            longTime = System.currentTimeMillis();
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(longTime);
+        //星期天-星期六 对应 1-7
+        return calendar.get(Calendar.DAY_OF_WEEK);
     }
 
     /**

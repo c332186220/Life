@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.cxl.life.R;
 import com.cxl.life.util.AUtil;
+import com.cxl.life.util.Constants;
 import com.cxl.life.util.L;
 import com.cxl.life.widget.FlowLayout;
 
@@ -188,12 +189,12 @@ public class ChineseNameFragment extends Fragment {
                 }
 
                 //控制文字变色
-//                @Override
-//                public void updateDrawState(TextPaint ds) {
-//                    super.updateDrawState(ds);
-//                    // 文字不变色
-//                    ds.setUnderlineText(false);
-//                }
+                @Override
+                public void updateDrawState(TextPaint ds) {
+                    super.updateDrawState(ds);
+                    // 文字不变色 可以去掉类似超链接的下划线
+                    ds.setUnderlineText(false);
+                }
             }, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             end++;
             start=end;

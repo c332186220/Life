@@ -56,6 +56,24 @@
             android:paddingTop="@dimen/item_padding_up_down"
             android:text="帮助与反馈" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/item_padding_left_right"
+            android:layout_marginRight="@dimen/item_padding_left_right"
+            android:background="@color/body_background" />
+
+        <TextView
+            android:id="@+id/setting_currency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_body_currency"
+            android:paddingBottom="@dimen/item_padding_up_down"
+            android:paddingLeft="@dimen/item_padding_left_right"
+            android:paddingRight="@dimen/item_padding_left_right"
+            android:paddingTop="@dimen/item_padding_up_down"
+            android:text="通用" />
+
     </LinearLayout>
 
 

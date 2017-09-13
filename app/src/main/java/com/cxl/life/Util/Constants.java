@@ -10,6 +10,7 @@ import android.os.Environment;
 public class Constants {
     public static final String SD = Environment.getExternalStorageDirectory().getAbsolutePath();
     //存放录制声音
-    public static String voice_sd = SD+"/alife/";
+    public static String voice_sd = SD+"/life/";
+    public static String journal_sd = SD+"/life/journal/";
 
 }

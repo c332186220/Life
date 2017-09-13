@@ -6,13 +6,13 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -25,12 +25,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.ForegroundColorSpan;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -38,12 +34,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cxl.life.app.layout.LayoutMainActivity;
-import com.cxl.life.util.AUtil;
 import com.cxl.life.util.L;
 import com.cxl.life.util.ScreenUtil;
 import com.cxl.life.app.JournalActivity;
 import com.cxl.life.app.draw.DrawLineActivity;
-import com.cxl.life.app.drift.DriftActivity;
 import com.cxl.life.app.king.KingGloryActivity;
 import com.cxl.life.app.SettingActivity;
 import com.cxl.life.app.voice.VoiceRecordActivity;
@@ -219,13 +213,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     //提示关闭程序
     private void confirmFinishApp(View view) {
-        Snackbar.make(view, "你想退出程序吗？", Snackbar.LENGTH_LONG)
-                .setAction("是的", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        MainActivity.this.finish();
-                    }
-                }).show();
+//        Snackbar.make(view, "你想退出程序吗？", Snackbar.LENGTH_LONG)
+//                .setAction("是的", new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        MainActivity.this.finish();
+//                    }
+//                }).show();
+
+        boolean b = moveTaskToBack(false);//程序移到后台
+        L.e("moveTask=="+b);
     }
 
     @Override
@@ -400,4 +397,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             L.e("我先");
         }
     }
+
 }

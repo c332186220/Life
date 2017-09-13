@@ -7,6 +7,7 @@
     <string name="activity_draw_line">绘制</string>
     <string name="activity_voice_record">语音</string>
     <string name="activity_journal_analysis">博能日志解析</string>
+    <string name="activity_currency">通用</string>
 
     <!-- 登录 -->
     <string name="prompt_account">账户</string>
@@ -43,5 +44,4 @@
     <!-- 默认取值 -->
     <string name="default_image">图片</string>
     <string name="default_load">内容加载失败</string>
-
 </resources>

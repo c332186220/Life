@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cxl.life.R;
+import com.cxl.life.util.AUtil;
 import com.cxl.life.util.Constants;
 import com.cxl.life.adapter.ImageViewPagerAdapter;
 import com.cxl.life.app.pager.DepthPageTransformer;
@@ -21,6 +22,7 @@ import com.cxl.life.app.pager.DepthPageTransformer;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -31,7 +33,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class JournalActivity extends BaseActivity implements View.OnClickListener {
+public class JournalActivity extends BaseActivity implements View.OnClickListener, View.OnLongClickListener {
     private EditText txt;
     private TextView result;
     private ViewPager viewPager;
@@ -53,6 +55,7 @@ public class JournalActivity extends BaseActivity implements View.OnClickListene
         analysis.setOnClickListener(this);
         result = (TextView) findViewById(R.id.journal_analysis_result);
         txt = (EditText) findViewById(R.id.journal_txt);
+        result.setOnLongClickListener(this);
 
         viewPager = (ViewPager) findViewById(R.id.journal_viewpager);
         setViewPager();
@@ -88,7 +91,7 @@ public class JournalActivity extends BaseActivity implements View.OnClickListene
         if (TextUtils.isEmpty(t)) {
             Toast.makeText(this, "文件名不能为空", Toast.LENGTH_SHORT).show();
         } else {
-            String tt = getFileContent(Constants.SD + "/" + t + ".txt");
+            String tt = getFileContent(Constants.journal_sd + t + ".txt");
             if (tt.startsWith("error")) {
                 result.setText(tt.substring(5));
             } else {
@@ -126,7 +129,8 @@ public class JournalActivity extends BaseActivity implements View.OnClickListene
         }
         StringBuilder result = new StringBuilder();
         for (String key : map.keySet()) {
-            result.append("项目：" + key + "  " + map.get(key) + "小时" + "\n");
+//            result.append("项目：" + key + "  " + map.get(key) + "小时" + "\n");
+            result.append(key + "  " + map.get(key) + "小时" + "\n");
         }
         return result.toString();
     }
@@ -156,10 +160,13 @@ public class JournalActivity extends BaseActivity implements View.OnClickListene
      */
     protected String getFileContent(String path) {
         File file = new File(path);
+        if (!file.exists()) {
+            return "error 没找到文件";
+        }
         StringBuilder content = new StringBuilder();
         //文件格式为txt文件
         try {
-            InputStream instream = new FileInputStream(file);
+            FileInputStream instream = new FileInputStream(file);
             InputStreamReader inputreader
                     = new InputStreamReader(instream, "GBK");
             BufferedReader buffreader = new BufferedReader(inputreader);
@@ -182,6 +189,11 @@ public class JournalActivity extends BaseActivity implements View.OnClickListene
         int[] mImgIds = new int[]{R.mipmap.xixi1,
                 R.mipmap.xixi2, R.mipmap.xixi3, R.mipmap.xixi4};
         List<ImageView> imageViews = new ArrayList<>();
+        ImageView imageView1 = new ImageView(getApplicationContext());
+        imageView1.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView1.setBackgroundResource(R.color.body_background);
+        imageViews.add(imageView1);
+
         for (int imgId : mImgIds) {
             ImageView imageView = new ImageView(getApplicationContext());
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -193,4 +205,14 @@ public class JournalActivity extends BaseActivity implements View.OnClickListene
         viewPager.setPageTransformer(true, new DepthPageTransformer());
     }
 
+    @Override
+    public boolean onLongClick(View v) {
+        switch (v.getId()) {
+            case R.id.journal_analysis_result:
+                AUtil.copy(this, result.getText().toString());
+                Toast.makeText(this,"复制成功",Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return true;
+    }
 }

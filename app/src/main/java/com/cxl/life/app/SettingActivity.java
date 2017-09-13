@@ -31,6 +31,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
         findViewById(R.id.about_app).setOnClickListener(this);
         findViewById(R.id.help_and_feedback).setOnClickListener(this);
+        findViewById(R.id.setting_currency).setOnClickListener(this);
     }
 
     @Override
@@ -102,6 +103,9 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 break;
             case R.id.help_and_feedback:
 
+                break;
+            case R.id.setting_currency:
+                startActivity(new Intent(this, CurrencyActivity.class));
                 break;
         }
     }

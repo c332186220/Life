@@ -57,6 +57,7 @@
             android:padding="@dimen/activity_horizontal_margin"
             android:text="等待.."
             android:textColor="@color/colorPrimary"
+            android:textIsSelectable="true"
             android:textSize="15sp" />
     </LinearLayout>
 

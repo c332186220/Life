@@ -1,17 +1,18 @@
 package com.cxl.life.base;
 
-import android.app.Application;
 import android.content.res.Configuration;
 
 import com.cxl.life.util.L;
 import com.cxl.life.app.BaseActivity;
+
+import org.litepal.LitePalApplication;
 
 /**
  * Created by cxl on 2017/7/13.
  * 程序入口
  */
 
-public class LifeApplication extends Application {
+public class LifeApplication extends LitePalApplication {
     @Override
     public void onCreate() {
         BaseActivity.isLogin = false;

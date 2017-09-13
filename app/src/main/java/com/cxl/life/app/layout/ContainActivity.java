@@ -63,6 +63,16 @@ public class ContainActivity extends AppCompatActivity {
                 transaction.replace(R.id.contain_fl, fragment);
                 transaction.commit();
                 break;
+            case "5":
+                fragment = new EditDataFragment();
+                transaction.replace(R.id.contain_fl, fragment);
+                transaction.commit();
+                break;
+            case "6":
+                fragment = new ExcelFragment();
+                transaction.replace(R.id.contain_fl, fragment);
+                transaction.commit();
+                break;
         }
     }
 
