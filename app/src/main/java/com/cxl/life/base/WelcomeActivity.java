@@ -3,15 +3,22 @@ package com.cxl.life.base;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cxl.life.MainActivity;
 import com.cxl.life.R;
+import com.cxl.life.util.TimeUtil;
+import com.cxl.life.widget.SnowView;
 
 import java.io.IOException;
 
@@ -21,7 +28,11 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
+    private SnowView snow;//雪花
+    private RelativeLayout welcome;//背景
+    private TextView start;//启动
+
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -32,6 +43,12 @@ public class WelcomeActivity extends AppCompatActivity {
                 case 2:
                     Toast.makeText(WelcomeActivity.this, "访问成功", Toast.LENGTH_SHORT).show();
                     initNetWork();
+                    break;
+                case 3:
+                    start.setBackgroundResource(R.drawable.item_top_title_press);
+                    start.setTextColor(ContextCompat.getColor(WelcomeActivity.this, R.color.white));
+                    start.setText("点我启动");
+                    start.setOnClickListener(WelcomeActivity.this);
                     break;
             }
         }
@@ -48,10 +65,38 @@ public class WelcomeActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
-                WelcomeActivity.this.finish();
+                handler.sendEmptyMessage(3);
             }
-        }, 500);
+        }, 2000);
+        welcome = (RelativeLayout) findViewById(R.id.activity_welcome);
+        snow = (SnowView) findViewById(R.id.welcome_snow);
+        start = (TextView) findViewById(R.id.welcome_start);
+        switch (TimeUtil.getCurrentMonth()) {
+            case 11:
+            case 12:
+            case 1:
+                welcome.setBackgroundResource(R.mipmap.welcome_winter_bg);
+                snow.loadFlower(R.drawable.ic_flow_winter);
+                break;
+            case 2:
+            case 3:
+            case 4:
+                welcome.setBackgroundResource(R.mipmap.welcome_spring_bg);
+                snow.loadFlower(R.drawable.ic_flow_spring);
+                break;
+            case 5:
+            case 6:
+            case 7:
+                welcome.setBackgroundResource(R.mipmap.welcome_summer_bg);
+                snow.loadFlower(R.drawable.ic_flow_summer);
+                break;
+            case 8:
+            case 9:
+            case 10:
+                welcome.setBackgroundResource(R.mipmap.welcome_autumn_bg);
+                snow.loadFlower(R.drawable.ic_flow_autumn);
+                break;
+        }
     }
 
     /**
@@ -91,5 +136,22 @@ public class WelcomeActivity extends AppCompatActivity {
         });
         dialog.setNeutralButton("取消", null);
         dialog.show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.welcome_start:
+                startActivity(new Intent(this, MainActivity.class));
+                break;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(snow!=null){
+            snow.recycle();
+        }
     }
 }

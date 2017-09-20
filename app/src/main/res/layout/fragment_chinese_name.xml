@@ -66,29 +66,4 @@
 
     </RelativeLayout>
 
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:id="@+id/chinese_title3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="3dp"
-            android:text="影星："
-            android:textColor="@color/black"
-            android:textSize="@dimen/body_size"
-            android:textStyle="bold" />
-
-        <com.cxl.life.widget.FlowLayout
-            android:id="@+id/chinese_name3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/chinese_title3"
-            android:background="@color/body_text_content" />
-
-    </RelativeLayout>
-
 </LinearLayout>

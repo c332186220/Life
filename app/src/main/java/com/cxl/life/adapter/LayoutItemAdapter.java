@@ -21,7 +21,7 @@ import java.util.Random;
 
 /**
  * Created by cxl on 2017/6/22.
- * 王者荣耀显示适配
+ * 分块显示适配
  */
 
 public class LayoutItemAdapter extends RecyclerView.Adapter {
@@ -29,6 +29,7 @@ public class LayoutItemAdapter extends RecyclerView.Adapter {
     private Context context;
     private Random random = new Random(255);
     private int height = 50;
+    RelativeLayout.LayoutParams layoutParams;
 
     private MyItemClickListener onItemClickListener;
 
@@ -40,6 +41,8 @@ public class LayoutItemAdapter extends RecyclerView.Adapter {
         this.context = context;
         this.list = list;
         this.height = height;
+        layoutParams = new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, height);
     }
 
     @Override
@@ -55,8 +58,8 @@ public class LayoutItemAdapter extends RecyclerView.Adapter {
         myHolder.title.setText(TextUtils.isEmpty(name) ? "匿名" : name);
         myHolder.title.setBackgroundColor(Color.rgb(random.nextInt() + 1,
                 random.nextInt(), random.nextInt()));
-        myHolder.title.setLayoutParams(new RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, height));
+        myHolder.title.setLayoutParams(layoutParams);
+        myHolder.cover.setLayoutParams(layoutParams);
         if (onItemClickListener != null) {
             myHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -75,11 +78,12 @@ public class LayoutItemAdapter extends RecyclerView.Adapter {
 
     private class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title;
+        TextView title, cover;
 
         private MyViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.layout_item_title);
+            cover = (TextView) itemView.findViewById(R.id.layout_item_cover);
         }
     }
 }

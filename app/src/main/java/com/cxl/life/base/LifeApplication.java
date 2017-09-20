@@ -4,6 +4,7 @@ import android.content.res.Configuration;
 
 import com.cxl.life.util.L;
 import com.cxl.life.app.BaseActivity;
+import com.cxl.life.util.ToastUtil;
 
 import org.litepal.LitePalApplication;
 
@@ -15,10 +16,11 @@ import org.litepal.LitePalApplication;
 public class LifeApplication extends LitePalApplication {
     @Override
     public void onCreate() {
+        super.onCreate();
         BaseActivity.isLogin = false;
         BaseActivity.time = System.currentTimeMillis();
         L.e("程序初始化..");
-        super.onCreate();
+        ToastUtil.init(this);//初始化toast
     }
 
     @Override

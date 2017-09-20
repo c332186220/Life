@@ -10,26 +10,84 @@
         android:layout_height="wrap_content"
         android:padding="4dp" />
 
+    <include layout="@layout/view_parting_line" />
+
     <LinearLayout
-        style="@style/ItemStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="49dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <TextView
-            android:layout_width="50dp"
+            android:layout_width="51dp"
             android:layout_height="wrap_content"
-            android:text="公司" />
+            android:text="昵称"
+            android:textColor="@color/body_text"
+            android:textSize="@dimen/body_size" />
+
+        <EditText
+            android:id="@+id/edit_data_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="填写昵称"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/body_text"
+            android:textSize="@dimen/body_size" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_item" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="9dp"
+        android:background="@color/line_item" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="61dp"
+            android:layout_height="wrap_content"
+            android:text="公司"
+            android:textColor="@color/body_text"
+            android:textSize="@dimen/body_size" />
 
         <EditText
             android:id="@+id/edit_data_company"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:hint="填写公司全名"
             android:inputType="text"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textColor="@color/body_text"
+            android:textSize="@dimen/body_size" />
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_item" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="9dp"
+        android:background="@color/line_item" />
 
     <LinearLayout
         style="@style/ItemStyle"
@@ -52,8 +110,9 @@
         style="@style/ItemStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@drawable/item_white_grey"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"

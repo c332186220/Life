@@ -1,7 +1,5 @@
 package com.cxl.life.app.layout;
 
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +9,6 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +18,7 @@ import android.widget.Toast;
 
 import com.cxl.life.R;
 import com.cxl.life.util.AUtil;
-import com.cxl.life.util.Constants;
 import com.cxl.life.util.L;
-import com.cxl.life.widget.FlowLayout;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by cxl on 2017/8/30.
@@ -35,7 +27,6 @@ import java.util.List;
 
 public class ChineseNameFragment extends Fragment {
     private TextView name1, name2;
-    private FlowLayout name3;
 
     @Nullable
     @Override
@@ -48,7 +39,6 @@ public class ChineseNameFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         name1 = (TextView) view.findViewById(R.id.chinese_name1);
         name2 = (TextView) view.findViewById(R.id.chinese_name2);
-        name3 = (FlowLayout) getView().findViewById(R.id.chinese_name3);
 
         initChineseName();
 //        addChineseName();
@@ -208,26 +198,4 @@ public class ChineseNameFragment extends Fragment {
         textView.setText(spannableString);
     }
 
-    //流布局添加的形式
-    private void addChineseName(){
-        final List<String> nameList = new ArrayList<>();
-        nameList.add("郭德纲");
-        nameList.add("岳云鹏");
-        nameList.add("于谦");
-        nameList.add("孙悦");
-//        报错java.lang.ClassCastException: android.view.ViewGroup$LayoutParams cannot be cast to android.view.ViewGroup$MarginLayoutParams
-//        at com.cxl.life.widget.FlowLayout.onMeasure(FlowLayout.java:48)
-
-//        for(int i=0;i<nameList.size();i++) {
-//            TextView tv = new TextView(getActivity());
-//            tv.setText(nameList.get(i)+"、");
-//            tv.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Toast.makeText(getActivity(),((TextView)v).getText().toString(),Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//            name3.addView(tv);
-//        }
-    }
 }

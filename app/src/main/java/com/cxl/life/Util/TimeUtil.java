@@ -36,6 +36,13 @@ public class TimeUtil {
         return time;
     }
 
+    /**
+     * 获取当前月
+     */
+    public static int getCurrentMonth() {
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.MONTH);
+    }
 
     /**
      * 字符串转时间戳

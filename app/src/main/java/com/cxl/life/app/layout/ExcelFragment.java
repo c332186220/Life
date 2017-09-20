@@ -29,7 +29,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -50,12 +49,10 @@ public class ExcelFragment extends Fragment implements View.OnClickListener {
 
     private Spinner spinner;
     private Button lateGet, reset;//获取迟到早退信息   重置数据
-    private long time;//执行时间
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        time = System.currentTimeMillis();
         return inflater.inflate(R.layout.fragment_excel, container, false);
     }
 
@@ -65,14 +62,12 @@ public class ExcelFragment extends Fragment implements View.OnClickListener {
 
         listView = (ListView) view.findViewById(R.id.excel_listView);
         listView.setEmptyView(view.findViewById(R.id.excel_data_null));
-        L.e("time-初始化" + (System.currentTimeMillis() - time));
         list = DataSupport.findAll(Attendance.class);
         adapter = new AttendanceAdapter(getActivity(), list);
         listView.setAdapter(adapter);
         if (list.size() == 0) {
             initData();
         }
-        L.e("time-初始化完毕" + (System.currentTimeMillis() - time));
 
         spinner = (Spinner) view.findViewById(R.id.excel_spinner);
         List<String> aList = DbManage.getAttendanceNumber();

@@ -43,6 +43,14 @@ public class ScreenUtil {
     }
 
     /**
+     * @param context
+     * @return屏幕密度
+     */
+    public static float getScreenDensity(Context context) {
+        return context.getResources().getDisplayMetrics().density;
+    }
+
+    /**
      * 获得状态栏的高度
      *
      * @param context

@@ -7,12 +7,19 @@
     android:background="@color/white"
     tools:context="com.cxl.life.base.WelcomeActivity">
 
+    <com.cxl.life.widget.SnowView
+        android:id="@+id/welcome_snow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <TextView
+        android:id="@+id/welcome_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
+        android:padding="10dp"
         android:text="启动中。。。" />
 
 </RelativeLayout>

@@ -5,4 +5,8 @@
         <attr name="xml" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="FlowLayout">
+        <attr name="lineSpacing" format="dimension" />
+    </declare-styleable>
+
 </resources>

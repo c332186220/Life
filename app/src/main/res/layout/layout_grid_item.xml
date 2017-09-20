@@ -16,4 +16,10 @@
         android:textSize="@dimen/item_title_size"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/layout_item_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/item_circle_bg" />
+
 </RelativeLayout>
