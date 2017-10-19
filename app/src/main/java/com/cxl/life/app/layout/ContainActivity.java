@@ -89,6 +89,11 @@ public class ContainActivity extends AppCompatActivity {
                 transaction.replace(R.id.contain_fl, fragment);
                 transaction.commit();
                 break;
+            case "10":
+                fragment = new MailListFragment();
+                transaction.replace(R.id.contain_fl, fragment);
+                transaction.commit();
+                break;
         }
     }
 

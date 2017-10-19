@@ -10,6 +10,10 @@ public class KingGlory {
     private String image;//图片链接
     private String describe;//描述
     private String dialogue;//对白
+    private String indexTag;//
+
+    public KingGlory() {
+    }
 
     public KingGlory(String name, String image, String describe) {
         this.name = name;
@@ -47,5 +51,13 @@ public class KingGlory {
 
     public void setDialogue(String dialogue) {
         this.dialogue = dialogue;
+    }
+
+    public String getIndexTag() {
+        return indexTag;
+    }
+
+    public void setIndexTag(String indexTag) {
+        this.indexTag = indexTag;
     }
 }
