@@ -2,6 +2,7 @@ package com.cxl.life.login;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Build;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 
 import com.cxl.life.R;
 import com.cxl.life.app.BaseActivity;
+import com.cxl.life.util.L;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +40,22 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         setContentView(R.layout.activity_login);
 
         initView();
+        String content = getIntent().getStringExtra("from");
+        L.e("oncreate+++"+content);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String content = getIntent().getStringExtra("from");
+        L.e("onresume+++"+content);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        String content = intent.getStringExtra("from");
+        L.e("onintent+++"+content);
     }
 
     private void initView() {

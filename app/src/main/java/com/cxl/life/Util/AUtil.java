@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.provider.Settings;
 
 /**
  * Created by cxl on 2017/8/5.
@@ -134,6 +135,35 @@ public class AUtil {
         // 创建普通字符型ClipData
         ClipData mClipData = ClipData.newPlainText("Label",content);
         cmb.setPrimaryClip(mClipData);
+    }
+
+    /**
+     * 跳转系统的辅助功能界面
+     */
+    public static void toSetting(Context context) {
+        Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+        context.startActivity(intent);
+    }
+
+    /**
+     * @param context Context
+     * @param cls     目标Class
+     */
+    public static void startActivity(Context context, Class cls) {
+        Intent intent = new Intent(context, cls);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到外部浏览器
+     *
+     * @param context Context
+     * @param url     url
+     */
+    public static void startOutsideBrowser(Context context, String url) {
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        context.startActivity(intent);
     }
 
 }

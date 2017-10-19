@@ -102,7 +102,7 @@ public class VoiceRecordActivity extends BaseActivity {
     }
 
     private void initData() {
-        list = FileUtil.getFileInPath(this, Constants.voice_sd, ".amr");
+        list = FileUtil.getFileInPath(Constants.voice_sd, ".amr");
         adapter = new TextRecyclerAdapter(this, list);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

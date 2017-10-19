@@ -107,6 +107,8 @@ public class TestUtil {
     public static List<String> getLayoutTitle() {
         List<String> titleList = new ArrayList<>();
         layoutTitle = new HashMap<>();
+        layoutTitle.put("表单填报", "9");
+        layoutTitle.put("进度条", "8");
         layoutTitle.put("流布局", "7");
         layoutTitle.put("excel解析", "6");
         layoutTitle.put("json解析", "5");

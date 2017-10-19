@@ -17,6 +17,7 @@ public class TimeUtil {
     private static SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault());
     private static SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
     private static SimpleDateFormat sdf3 = new SimpleDateFormat("M/d/yy H:mm", Locale.getDefault());
+    private static SimpleDateFormat sdf4 = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
 
     /**
      * 返回当前时间的格式为 yyyy-MM-dd HH:mm:ss
@@ -31,6 +32,9 @@ public class TimeUtil {
                 break;
             case 2:
                 time = sdf2.format(System.currentTimeMillis());
+                break;
+            case 4:
+                time = sdf4.format(System.currentTimeMillis());
                 break;
         }
         return time;

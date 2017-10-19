@@ -1,6 +1,8 @@
 package com.cxl.life.service;
 
 import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
@@ -10,6 +12,8 @@ import android.os.IBinder;
 import android.os.SystemClock;
 import android.util.Log;
 
+import com.cxl.life.R;
+import com.cxl.life.login.LoginActivity;
 import com.cxl.life.util.L;
 import com.cxl.life.util.TimeUtil;
 
@@ -30,22 +34,23 @@ public class MainService extends Service {
         Log.e("MainService", "onCreate()");
         super.onCreate();
         //通知栏
-//        Intent notificationIntent = new Intent(this, LoginActivity.class);
-//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
-//                notificationIntent, 0);
-//        Notification notification = new Notification.Builder(this)
-//                .setSmallIcon(R.mipmap.ic_launcher)
-//                .setContentTitle("标题")
-//                .setContentText("这是内容部分")
-//                .setTicker("您有新消息，请注意查收！")
-//                .setWhen(System.currentTimeMillis())
-//                .setDefaults(Notification.DEFAULT_VIBRATE)
-//                .setContentIntent(pendingIntent).build();
-//        notification.flags = Notification.FLAG_AUTO_CANCEL;//设置可以清除
-//        NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-//        //根据id来管理通知
-//        mNotificationManager.notify(1, notification);
-//        startForeground(1, notification);//将服务变为前台服务
+        Intent notificationIntent = new Intent(this, LoginActivity.class);
+        notificationIntent.putExtra("from","我来自服务");
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
+                notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Notification notification = new Notification.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("标题")
+                .setContentText("这是内容部分")
+                .setTicker("您有新消息，请注意查收！======")
+                .setWhen(System.currentTimeMillis())
+                .setDefaults(Notification.DEFAULT_VIBRATE)
+                .setContentIntent(pendingIntent).build();
+        notification.flags = Notification.FLAG_AUTO_CANCEL;//设置可以清除
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        //根据id来管理通知
+        mNotificationManager.notify(101, notification);
+//        startForeground(101, notification);//将服务变为前台服务
 
     }
 

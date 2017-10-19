@@ -39,7 +39,9 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     testCompile 'junit:junit:4.12'
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile 'com.squareup.okio:okio:1.11.0'
     compile 'com.kyleduo.switchbutton:library:1.4.6'
     compile 'com.alibaba:fastjson:1.2.38'
     compile 'org.litepal.android:core:1.6.0'
+    compile 'in.srain.cube:ultra-ptr:1.0.11'
 }

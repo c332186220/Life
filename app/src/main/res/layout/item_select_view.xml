@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_select_text"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_white_grey"
+    android:ellipsize="marquee"
+    android:maxLines="1"
+    android:padding="15dp"
+    android:textColor="@color/body_text" />
+

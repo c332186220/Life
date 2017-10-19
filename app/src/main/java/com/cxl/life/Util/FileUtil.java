@@ -15,11 +15,10 @@ public class FileUtil {
     /**
      * 获取某个路径下的某个格式文件
      *
-     * @param context 上下文
      * @param strPath 路径
      * @param format 格式，如.doc
      */
-    public static List<String> getFileInPath(Context context, String strPath, String format) {
+    public static List<String> getFileInPath(String strPath, String format) {
         File dir = new File(strPath);
         File[] files = dir.listFiles();
         List<String> list = new ArrayList<>();

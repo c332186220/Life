@@ -33,6 +33,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cxl.life.app.effect.JdActivity;
 import com.cxl.life.app.layout.LayoutMainActivity;
 import com.cxl.life.util.L;
 import com.cxl.life.util.ScreenUtil;
@@ -145,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(this, VoiceRecordActivity.class));
                 break;
             case R.id.nav_menu3:
-                startActivity(new Intent(this, JournalActivity.class));
+//                startActivity(new Intent(this, JournalActivity.class));
                 break;
             case R.id.nav_menu4:
                 startActivity(new Intent(this, LayoutMainActivity.class));
@@ -173,6 +174,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else if (disperse1.getVisibility() == View.VISIBLE) {
+            //TODO 动画中会多次执行
             showDispersed();
         } else {
             confirmFinishApp(drawer);
@@ -194,6 +196,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.main_disperse1:
                 Toast.makeText(this, "电话", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, JdActivity.class));
                 showDispersed();
                 break;
             case R.id.main_disperse2:
@@ -213,16 +216,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     //提示关闭程序
     private void confirmFinishApp(View view) {
-//        Snackbar.make(view, "你想退出程序吗？", Snackbar.LENGTH_LONG)
-//                .setAction("是的", new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        MainActivity.this.finish();
-//                    }
-//                }).show();
+        Snackbar.make(view, "你想退出程序吗？", Snackbar.LENGTH_LONG)
+                .setAction("是的", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        MainActivity.this.finish();
+                    }
+                }).show();
 
-        boolean b = moveTaskToBack(false);//程序移到后台
-        L.e("moveTask=="+b);
+//        boolean b = moveTaskToBack(false);//程序移到后台
+//        L.e("moveTask=="+b);
     }
 
     @Override

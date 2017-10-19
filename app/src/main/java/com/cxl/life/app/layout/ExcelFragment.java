@@ -147,11 +147,12 @@ public class ExcelFragment extends Fragment implements View.OnClickListener {
     //获取迟到早退信息
     private void getLateData() {
         list.clear();
+        //TODO 会因为没权限读取不到数据，导致空
         String number = spinner.getSelectedItem().toString();
         String name = DbManage.getAttendanceName(number);
         //获取上个月初的时间
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.MONTH, -1);//获取前一个月
+//        calendar.add(Calendar.MONTH, -1);//获取前一个月
         calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), 1, 9, 0, 0);
         int day = calendar.getActualMaximum(Calendar.DATE);
         SimpleDateFormat sdf3 = new SimpleDateFormat("M/d/yy H:mm", Locale.getDefault());

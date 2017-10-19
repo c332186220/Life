@@ -79,6 +79,16 @@ public class ContainActivity extends AppCompatActivity {
                 transaction.replace(R.id.contain_fl, fragment);
                 transaction.commit();
                 break;
+            case "8":
+                fragment = new ProgressFragment();
+                transaction.replace(R.id.contain_fl, fragment);
+                transaction.commit();
+                break;
+            case "9":
+                fragment = new HeadAndFootFragment();
+                transaction.replace(R.id.contain_fl, fragment);
+                transaction.commit();
+                break;
         }
     }
 

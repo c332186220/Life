@@ -67,10 +67,11 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
             public void run() {
                 handler.sendEmptyMessage(3);
             }
-        }, 2000);
+        }, 1000);
         welcome = (RelativeLayout) findViewById(R.id.activity_welcome);
         snow = (SnowView) findViewById(R.id.welcome_snow);
         start = (TextView) findViewById(R.id.welcome_start);
+        //根据季节加载不同的背景
         switch (TimeUtil.getCurrentMonth()) {
             case 11:
             case 12:
@@ -143,6 +144,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         switch (v.getId()) {
             case R.id.welcome_start:
                 startActivity(new Intent(this, MainActivity.class));
+                this.finish();
                 break;
         }
     }
@@ -150,7 +152,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(snow!=null){
+        if (snow != null) {
             snow.recycle();
         }
     }
