@@ -34,6 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cxl.life.app.effect.JdActivity;
+import com.cxl.life.app.function.FunctionActivity;
 import com.cxl.life.app.layout.LayoutMainActivity;
 import com.cxl.life.util.L;
 import com.cxl.life.util.ScreenUtil;
@@ -41,7 +42,6 @@ import com.cxl.life.app.JournalActivity;
 import com.cxl.life.app.draw.DrawLineActivity;
 import com.cxl.life.app.king.KingGloryActivity;
 import com.cxl.life.app.SettingActivity;
-import com.cxl.life.app.voice.VoiceRecordActivity;
 import com.cxl.life.app.wechat.WeChatActivity;
 import com.cxl.life.login.LoginActivity;
 import com.cxl.life.service.MainService;
@@ -143,10 +143,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(this, KingGloryActivity.class));
                 break;
             case R.id.nav_menu2:
-                startActivity(new Intent(this, VoiceRecordActivity.class));
+                startActivity(new Intent(this, FunctionActivity.class));
                 break;
             case R.id.nav_menu3:
-//                startActivity(new Intent(this, JournalActivity.class));
+                startActivity(new Intent(this, JournalActivity.class));
                 break;
             case R.id.nav_menu4:
                 startActivity(new Intent(this, LayoutMainActivity.class));

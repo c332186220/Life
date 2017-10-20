@@ -21,6 +21,7 @@
 
         <item name="android:windowBackground">@color/body_background</item>
         <item name="android:textColor">@color/body_text</item>
+
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

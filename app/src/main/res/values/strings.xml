@@ -4,6 +4,7 @@
     <string name="activity_wechat">微信</string>
     <string name="activity_king_glory">王者荣耀</string>
     <string name="activity_layout">布局展示</string>
+    <string name="activity_function">多彩功能</string>
     <string name="activity_draw_line">绘制</string>
     <string name="activity_voice_record">语音</string>
     <string name="activity_journal_analysis">博能日志解析</string>
@@ -33,7 +34,7 @@
     <string name="navigation_drawer_open">打开</string>
     <string name="navigation_drawer_close">关闭</string>
     <string name="nav_menu1">王者荣耀</string>
-    <string name="nav_menu2">语音录制</string>
+    <string name="nav_menu2">多彩功能</string>
     <string name="nav_menu3">日志解析</string>
     <string name="nav_menu4">浮动布局</string>
     <string name="about_us">关于我们</string>
@@ -44,4 +45,6 @@
     <!-- 默认取值 -->
     <string name="default_image">图片</string>
     <string name="default_load">内容加载失败</string>
+
+    <string name="title_notification_bar">当前步数:%1$s</string>
 </resources>
