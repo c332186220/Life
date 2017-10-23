@@ -27,7 +27,7 @@ public class WeChatActivity extends BaseActivity {
         initView();
     }
 
-    private void initView() {
+    public void initView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.wechat_toolbar);
         setSupportActionBar(toolbar);
 

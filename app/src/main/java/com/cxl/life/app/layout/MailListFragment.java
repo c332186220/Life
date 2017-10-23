@@ -14,10 +14,9 @@ import com.cxl.life.R;
 import com.cxl.life.adapter.ContactAdapter;
 import com.cxl.life.bean.KingGlory;
 import com.cxl.life.util.TestUtil;
-import com.cxl.life.widget.contacts.CommonUtil;
+import com.cxl.life.util.CommonUtil;
 import com.cxl.life.widget.contacts.CustomItemDecoration;
 import com.cxl.life.widget.contacts.SideBar;
-import com.cxl.life.widget.contacts.animal.SlideInOutLeftItemAnimator;
 
 import java.util.ArrayList;
 import java.util.List;

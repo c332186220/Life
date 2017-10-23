@@ -58,7 +58,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         L.e("onintent+++"+content);
     }
 
-    private void initView() {
+    public void initView() {
         //沉浸式状态栏
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();

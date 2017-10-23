@@ -127,6 +127,9 @@
         <activity android:name=".app.function.FunctionActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".app.function.popup.PopupWindowActivity"
+            android:screenOrientation="portrait"/>
+
         <receiver
             android:name=".app.setp.StepReceiver"
             android:enabled="true"

@@ -46,7 +46,7 @@ public class JournalActivity extends BaseActivity implements View.OnClickListene
         initView();
     }
 
-    private void initView() {
+    public void initView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.journal_toolbar);
         toolbar.setTitle("博能日志统计");
         setSupportActionBar(toolbar);

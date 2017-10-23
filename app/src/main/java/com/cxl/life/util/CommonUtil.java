@@ -1,4 +1,4 @@
-package com.cxl.life.widget.contacts;
+package com.cxl.life.util;
 
 import android.view.View;
 

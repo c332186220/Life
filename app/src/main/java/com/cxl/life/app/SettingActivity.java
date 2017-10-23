@@ -25,7 +25,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         initView();
     }
 
-    private void initView() {
+    public void initView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.setting_toolbar);
         setSupportActionBar(toolbar);
 

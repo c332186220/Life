@@ -61,7 +61,7 @@ public class VoiceRecordActivity extends BaseActivity {
         initData();
     }
 
-    private void initView() {
+    public void initView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.voice_record_toolbar);
         toolbar.setTitle(R.string.activity_voice_record);
         setSupportActionBar(toolbar);

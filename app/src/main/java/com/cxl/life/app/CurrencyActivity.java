@@ -34,7 +34,7 @@ public class CurrencyActivity extends BaseActivity implements View.OnClickListen
         initData();
     }
 
-    private void initView() {
+    public void initView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.currency_toolbar);
         setSupportActionBar(toolbar);
 

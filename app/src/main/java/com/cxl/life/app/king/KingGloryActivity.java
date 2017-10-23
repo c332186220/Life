@@ -38,7 +38,7 @@ public class KingGloryActivity extends BaseActivity {
         initData();
     }
 
-    private void initView() {
+    public void initView() {
         recyclerView = (RecyclerView) findViewById(R.id.king_glory_rlv);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.king_glory_toolbar);

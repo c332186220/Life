@@ -10,6 +10,7 @@ import android.widget.GridView;
 
 import com.cxl.life.R;
 import com.cxl.life.adapter.MenuAdapter;
+import com.cxl.life.app.function.popup.PopupWindowActivity;
 import com.cxl.life.app.voice.VoiceRecordActivity;
 import com.cxl.life.bean.function.MenuData;
 
@@ -32,11 +33,18 @@ public class FunctionActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.layout_toolbar);
         toolbar.setTitle(R.string.activity_function);
         setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         menuGv = (GridView) findViewById(R.id.function_menu);
         list = new ArrayList<>();
         list.add(new MenuData(R.mipmap.function_record, "语音录制", "1"));
         list.add(new MenuData(R.mipmap.function_step, "记步", "2"));
+        list.add(new MenuData(R.mipmap.function_popup, "弹框", "3"));
 
         MenuAdapter adapter = new MenuAdapter(this, list);
         menuGv.setAdapter(adapter);
@@ -49,6 +57,9 @@ public class FunctionActivity extends AppCompatActivity {
                         break;
                     case "2"://记步
 //                        startActivity(new Intent(FunctionActivity.this, VoiceRecordActivity.class));
+                        break;
+                    case "3"://弹框
+                        startActivity(new Intent(FunctionActivity.this, PopupWindowActivity.class));
                         break;
 
                 }

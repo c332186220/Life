@@ -30,7 +30,7 @@ public class DriftActivity extends BaseActivity {
         initView();
     }
 
-    private void initView() {
+    public void initView() {
         recyclerView = (RecyclerView) findViewById(R.id.king_glory_rlv);
         List<String> list = new ArrayList<>();
         for(int i=0;i<30;i++){
