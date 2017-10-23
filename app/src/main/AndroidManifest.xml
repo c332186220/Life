@@ -135,7 +135,10 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".app.function.vp.VpTitleActivity"></activity>
+        <activity android:name=".app.function.vp.VpTitleActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".app.function.download.DownloadActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

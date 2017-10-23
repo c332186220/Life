@@ -12,5 +12,7 @@ public class Constants {
     //存放录制声音
     public static String voice_sd = SD+"/life/";
     public static String journal_sd = SD+"/life/journal/";
+    //默认下载路径
+    public static String download_sd = SD+"/life/download/";
 
 }

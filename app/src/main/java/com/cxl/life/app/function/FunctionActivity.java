@@ -10,6 +10,7 @@ import android.widget.GridView;
 
 import com.cxl.life.R;
 import com.cxl.life.adapter.MenuAdapter;
+import com.cxl.life.app.function.download.DownloadActivity;
 import com.cxl.life.app.function.popup.PopupWindowActivity;
 import com.cxl.life.app.function.vp.VpTitleActivity;
 import com.cxl.life.app.voice.VoiceRecordActivity;
@@ -47,6 +48,7 @@ public class FunctionActivity extends AppCompatActivity {
         list.add(new MenuData(R.mipmap.function_step, "记步", "2"));
         list.add(new MenuData(R.mipmap.function_popup, "弹框", "3"));
         list.add(new MenuData(R.mipmap.function_vp_title, "滑动切换标题", "4"));
+        list.add(new MenuData(R.mipmap.function_download, "多线程下载", "5"));
 
         MenuAdapter adapter = new MenuAdapter(this, list);
         menuGv.setAdapter(adapter);
@@ -63,8 +65,11 @@ public class FunctionActivity extends AppCompatActivity {
                     case "3"://弹框
                         startActivity(new Intent(FunctionActivity.this, PopupWindowActivity.class));
                         break;
-                    case "4"://弹框
+                    case "4"://页签联动切换
                         startActivity(new Intent(FunctionActivity.this, VpTitleActivity.class));
+                        break;
+                    case "5"://下载
+                        startActivity(new Intent(FunctionActivity.this, DownloadActivity.class));
                         break;
 
                 }
