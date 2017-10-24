@@ -12,6 +12,7 @@ import android.content.res.Configuration;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.provider.Settings;
+import android.support.v4.content.ContextCompat;
 
 /**
  * Created by cxl on 2017/8/5.
@@ -164,6 +165,29 @@ public class AUtil {
         Uri uri = Uri.parse(url);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         context.startActivity(intent);
+    }
+
+    //权限工具
+
+    /**
+     *  判断权限集合
+     * @param context
+     * @param permissions 权限
+     * @return true为权限不全
+     */
+    public static boolean lacksPermissions(Context context,String... permissions) {
+        for (String permission : permissions) {
+            if (lacksPermission(context,permission)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // 判断是否缺少权限
+    private static boolean lacksPermission(Context context,String permission) {
+        return ContextCompat.checkSelfPermission(context, permission) ==
+                PackageManager.PERMISSION_DENIED;
     }
 
 }

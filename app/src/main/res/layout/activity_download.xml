@@ -21,7 +21,6 @@
             android:id="@+id/btn_download_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="downloadOrPauseAll"
             android:text="全部下载" />
 
         <Button
@@ -29,7 +28,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:onClick="cancelAll"
             android:text="全部取消" />
     </LinearLayout>
 
@@ -71,7 +69,6 @@
             android:id="@+id/btn_download1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="downloadOrPause"
             android:text="下载" />
 
         <Button
@@ -79,7 +76,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:onClick="cancel"
             android:text="取消" />
 
     </LinearLayout>
@@ -122,7 +118,6 @@
             android:id="@+id/btn_download2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="downloadOrPause"
             android:text="下载" />
 
         <Button
@@ -130,7 +125,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:onClick="cancel"
             android:text="取消" />
 
     </LinearLayout>

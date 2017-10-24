@@ -11,6 +11,7 @@ import android.widget.GridView;
 import com.cxl.life.R;
 import com.cxl.life.adapter.MenuAdapter;
 import com.cxl.life.app.function.download.DownloadActivity;
+import com.cxl.life.app.function.permission.PermissionActivity;
 import com.cxl.life.app.function.popup.PopupWindowActivity;
 import com.cxl.life.app.function.vp.VpTitleActivity;
 import com.cxl.life.app.voice.VoiceRecordActivity;
@@ -49,6 +50,7 @@ public class FunctionActivity extends AppCompatActivity {
         list.add(new MenuData(R.mipmap.function_popup, "弹框", "3"));
         list.add(new MenuData(R.mipmap.function_vp_title, "滑动切换标题", "4"));
         list.add(new MenuData(R.mipmap.function_download, "多线程下载", "5"));
+        list.add(new MenuData(R.mipmap.function_permission, "权限管理", "6"));
 
         MenuAdapter adapter = new MenuAdapter(this, list);
         menuGv.setAdapter(adapter);
@@ -70,6 +72,9 @@ public class FunctionActivity extends AppCompatActivity {
                         break;
                     case "5"://下载
                         startActivity(new Intent(FunctionActivity.this, DownloadActivity.class));
+                        break;
+                    case "6"://权限
+                        startActivity(new Intent(FunctionActivity.this, PermissionActivity.class));
                         break;
 
                 }

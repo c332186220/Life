@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.cxl.life.app.function.permission.PermissionActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/unify_toolbar" />
+
+    <Button
+        android:id="@+id/permission_grant1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/permission_calendar" />
+
+    <Button
+        android:id="@+id/permission_grant2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/permission_calendar_storage" />
+
+    <Button
+        android:id="@+id/permission_grant3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/permission_phone" />
+
+    <Button
+        android:id="@+id/permission_grant4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/permission_sensors" />
+
+    <Button
+        android:id="@+id/permission_grant5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/permission_camera_check" />
+
+</LinearLayout>
