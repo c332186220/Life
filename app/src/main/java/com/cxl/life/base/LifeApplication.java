@@ -2,6 +2,7 @@ package com.cxl.life.base;
 
 import android.content.res.Configuration;
 
+import com.cxl.life.util.CrashHandler;
 import com.cxl.life.util.L;
 import com.cxl.life.app.BaseActivity;
 import com.cxl.life.util.ToastUtil;
@@ -21,6 +22,8 @@ public class LifeApplication extends LitePalApplication {
         BaseActivity.time = System.currentTimeMillis();
         L.e("程序初始化..");
         ToastUtil.init(this);//初始化toast
+        //异常日志捕获
+        CrashHandler.getInstance().init(this);
     }
 
     @Override

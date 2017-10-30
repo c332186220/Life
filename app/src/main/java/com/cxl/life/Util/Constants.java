@@ -14,5 +14,7 @@ public class Constants {
     public static String journal_sd = SD+"/life/journal/";
     //默认下载路径
     public static String download_sd = SD+"/life/download/";
+    //错误日志存储路径
+    public static String crash_sd = SD+"/life/crash/";
 
 }
