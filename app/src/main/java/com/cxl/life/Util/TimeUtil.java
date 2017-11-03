@@ -49,6 +49,18 @@ public class TimeUtil {
     }
 
     /**
+     * 获得几天之前或者几天之后的日期
+     *
+     * @param diff 差值：正的往后推，负的往前推
+     * @return
+     */
+    public static String getOtherDay(int diff) {
+        Calendar mCalendar = Calendar.getInstance();
+        mCalendar.add(Calendar.DATE, diff);
+        return sdf2.format(mCalendar.getTime());
+    }
+
+    /**
      * 字符串转时间戳
      *
      * @param time 字符串

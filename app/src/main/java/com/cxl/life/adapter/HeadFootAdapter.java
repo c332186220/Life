@@ -79,6 +79,7 @@ public class HeadFootAdapter extends RecyclerView.Adapter<HeadFootAdapter.MyHold
                     showPopupWindow(v, finalPosition);
                 }
             });
+
             item1.setTag(fd);
             item1.addTextChangedListener(new TextWatcher() {
 
@@ -291,5 +292,27 @@ public class HeadFootAdapter extends RecyclerView.Adapter<HeadFootAdapter.MyHold
                 break;
         }
         return ammeter;
+    }
+
+    class MyTextWatcher implements TextWatcher {
+        //由于TextWatcher的afterTextChanged中拿不到对应的position值，所以自己创建一个子类
+        private int mPosition;
+
+        public void updatePosition(int position) {
+            mPosition = position;
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            data.get(mPosition).setFIRST_VALUE(s.toString());
+        }
     }
 }
