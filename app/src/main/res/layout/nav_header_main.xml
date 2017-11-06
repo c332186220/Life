@@ -11,11 +11,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
-        android:id="@+id/nav_image_header"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_header" />
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/nav_image_header"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@mipmap/ic_header" />
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@mipmap/ic_header_bg" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/nav_name_header"

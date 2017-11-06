@@ -167,6 +167,12 @@
             android:screenOrientation="portrait" />
         <activity android:name=".app.function.permission.PermissionActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".image.PhotoPickerActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".image.PhotoPreviewActivity"/>
     </application>
 
 </manifest>

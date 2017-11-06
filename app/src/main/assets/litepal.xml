@@ -2,10 +2,11 @@
 <litepal>
 
     <dbname value="life" />
-    <version value="2" />
+    <version value="3" />
 
     <list>
         <mapping class="com.cxl.life.bean.Attendance" />
+        <mapping class="com.cxl.life.bean.User" />
     </list>
 
 </litepal>

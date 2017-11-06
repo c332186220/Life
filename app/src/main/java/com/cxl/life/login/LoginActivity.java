@@ -25,7 +25,10 @@ import android.widget.Toast;
 
 import com.cxl.life.R;
 import com.cxl.life.app.BaseActivity;
+import com.cxl.life.bean.User;
+import com.cxl.life.util.Constants;
 import com.cxl.life.util.L;
+import com.cxl.life.util.TestUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,12 +108,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     //自动完成设置
     private void addAccountToAutoComplete() {
         //优化  放置本地数据库，并加入王者荣耀数据
-        List<String> accountList = new ArrayList<>();
-        accountList.add("luban7hao");
-        accountList.add("zhugeliang");
-        accountList.add("ake");
-        accountList.add("direnjie");
-        accountList.add("zhaoyun");
+        List<String> accountList = TestUtil.getPinyinName();
         //simple_list_item_1很合规  simple_spinner_item间距小
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(LoginActivity.this,
@@ -131,6 +129,21 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         } else {
             Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
             isLogin = true;
+            User user = new User();
+            user.setName(account);
+            user.setPassword(password);
+            if(TestUtil.nameTranslate.containsKey(account)){
+                String n = TestUtil.nameTranslate.get(account);
+                user.setNickname(n);
+                user.setHeadPortrait(TestUtil.getUserPic(n));
+            }else{
+                user.setNickname("乐享");
+                user.setHeadPortrait("");
+            }
+            user.setLoginState(1);
+//            user.saveOrUpdate("name = ?",account);
+            Constants.loginUser = user;
+            setResult(RESULT_OK);
             finish();
         }
     }

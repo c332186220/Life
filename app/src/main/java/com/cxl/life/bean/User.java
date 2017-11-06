@@ -1,11 +1,13 @@
 package com.cxl.life.bean;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by cxl on 2017/9/11.
  * 用户表
  */
 
-public class User {
+public class User extends DataSupport{
     private String name;//姓名
     private String sex;//性别
     private String birthday;//生日
@@ -19,6 +21,8 @@ public class User {
     private String profession;//职业
     private String mailbox;//邮箱
     private String statement;//个人说明
+    private String password;//密码
+    private int loginState = 0;//登录状态  1为登录
 
     public String getName() {
         return name;
@@ -122,5 +126,21 @@ public class User {
 
     public void setStatement(String statement) {
         this.statement = statement;
+    }
+
+    public int getLoginState() {
+        return loginState;
+    }
+
+    public void setLoginState(int loginState) {
+        this.loginState = loginState;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

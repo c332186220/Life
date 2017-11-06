@@ -1,6 +1,7 @@
 package com.cxl.life.util;
 
 import com.cxl.life.bean.KingGlory;
+import com.github.promeg.pinyinhelper.Pinyin;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +21,7 @@ public class TestUtil {
     private static int[] king2 = new int[]{182, 187, 191, 192, 190, 180, 186, 178, 177, 163, 132, 183, 126, 184, 140, 174, 142, 135, 169, 114, 152, 107, 154, 133, 150, 108, 112, 130, 168, 141, 129, 106, 127, 109, 118, 136, 115, 123, 167, 111, 134,
             144, 119, 166, 116, 148, 124, 139, 110, 128, 113, 156, 117, 121, 146, 105, 120, 171, 170, 153, 162, 131, 175, 173, 149, 157};
     public static HashMap<String, String> layoutTitle;
+    public static HashMap<String, String> nameTranslate;//中英对照
 
     public static List<KingGlory> getKingGlory() {
         List<KingGlory> list = new ArrayList<>();
@@ -102,6 +104,33 @@ public class TestUtil {
         map.put("刘邦", "不客观的说，我是个好人！");
         map.put("不知火舞", "かちょうせん");
         return map;
+    }
+
+    /**
+     * 获取汉字对应的拼音
+     * @return
+     */
+    public static List<String> getPinyinName() {
+        if(nameTranslate==null){
+            nameTranslate = new HashMap<>();
+        }
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < king1.length; i++) {
+            String pinyin = Pinyin.toPinyin(king1[i],"");
+            list.add(pinyin);
+            nameTranslate.put(pinyin,king1[i]);
+        }
+        return list;
+    }
+    //临时获取用户头像
+    public static String getUserPic(String name){
+        String pic = "";
+        for (int i = 0; i < king1.length; i++) {
+            if(name.equals(king1[i])){
+                pic = "http://game.gtimg.cn/images/yxzj/img201606/heroimg/" + king2[i] + "/" + king2[i] + ".jpg";
+            }
+        }
+        return pic;
     }
 
     public static List<String> getLayoutTitle() {

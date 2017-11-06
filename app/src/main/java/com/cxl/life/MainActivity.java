@@ -33,9 +33,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.cxl.life.app.effect.JdActivity;
 import com.cxl.life.app.function.FunctionActivity;
 import com.cxl.life.app.layout.LayoutMainActivity;
+import com.cxl.life.image.PhotoPickerActivity;
+import com.cxl.life.image.SelectModel;
+import com.cxl.life.image.intent.PhotoPickerIntent;
+import com.cxl.life.util.Constants;
 import com.cxl.life.util.L;
 import com.cxl.life.util.ScreenUtil;
 import com.cxl.life.app.JournalActivity;
@@ -46,6 +51,9 @@ import com.cxl.life.app.wechat.WeChatActivity;
 import com.cxl.life.login.LoginActivity;
 import com.cxl.life.service.MainService;
 
+import java.io.File;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private DrawerLayout drawer;//抽屉
     private TextView show;//展示一些更新信息
@@ -54,6 +62,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private RefreshReceiver receiver;//通知性广播
     private boolean isAnimation = false;
     private RelativeLayout rl;//添加动态控件
+
+    private ImageView imageHeader;//用户头像
+    private TextView textHeader;//用户名
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,8 +102,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 //        View navHeaderView = navigationView.inflateHeaderView(R.layout.nav_header_main);  用此方法需要注销布局里的headerLayout
         View navHeaderView = navigationView.getHeaderView(0);
-        ImageView imageHeader = (ImageView) navHeaderView.findViewById(R.id.nav_image_header);
-        TextView textHeader = (TextView) navHeaderView.findViewById(R.id.nav_name_header);
+        imageHeader = (ImageView) navHeaderView.findViewById(R.id.nav_image_header);
+        textHeader = (TextView) navHeaderView.findViewById(R.id.nav_name_header);
         textHeader.setText("登录");
         imageHeader.setOnClickListener(this);
         textHeader.setOnClickListener(this);
@@ -188,8 +199,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         switch (v.getId()) {
             case R.id.nav_image_header:
+                if (Constants.loginUser == null) {
+                    startActivityForResult(new Intent(this, LoginActivity.class), 1001);
+                } else {
+                    PhotoPickerIntent intent1 = new PhotoPickerIntent(MainActivity.this);
+                    intent1.setSelectModel(SelectModel.SINGLE);
+                    intent1.setShowCarema(true);
+                    startActivityForResult(intent1, 1002);
+                }
+                break;
             case R.id.nav_name_header:
-                startActivity(new Intent(this, LoginActivity.class));
+                startActivityForResult(new Intent(this, LoginActivity.class), 1001);
                 break;
             case R.id.main_dispersed:
                 showDispersed();
@@ -398,6 +418,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (requestCode == 1) {
             //gps打开返回结果
             L.e("我先");
+        }
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case 1001:
+                    textHeader.setText(Constants.loginUser.getNickname());
+                    Glide.with(this).load(Constants.loginUser.getHeadPortrait()).error(R.mipmap.ic_header).into(imageHeader);
+                    break;
+                case 1002:
+                    ArrayList<String> paths = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
+                    if (paths != null && paths.size() > 0) {
+                        Glide.with(MainActivity.this)
+                                .load(new File(paths.get(0)))
+                                .placeholder(R.mipmap.ic_header)
+                                .error(R.mipmap.ic_header)
+                                .centerCrop()
+                                .crossFade()
+                                .into(imageHeader);
+                    }
+                    break;
+            }
         }
     }
 
