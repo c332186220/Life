@@ -108,25 +108,27 @@ public class TestUtil {
 
     /**
      * 获取汉字对应的拼音
+     *
      * @return
      */
     public static List<String> getPinyinName() {
-        if(nameTranslate==null){
+        if (nameTranslate == null) {
             nameTranslate = new HashMap<>();
         }
         List<String> list = new ArrayList<>();
         for (int i = 0; i < king1.length; i++) {
-            String pinyin = Pinyin.toPinyin(king1[i],"");
+            String pinyin = Pinyin.toPinyin(king1[i], "");
             list.add(pinyin);
-            nameTranslate.put(pinyin,king1[i]);
+            nameTranslate.put(pinyin, king1[i]);
         }
         return list;
     }
+
     //临时获取用户头像
-    public static String getUserPic(String name){
+    public static String getUserPic(String name) {
         String pic = "";
         for (int i = 0; i < king1.length; i++) {
-            if(name.equals(king1[i])){
+            if (name.equals(king1[i])) {
                 pic = "http://game.gtimg.cn/images/yxzj/img201606/heroimg/" + king2[i] + "/" + king2[i] + ".jpg";
             }
         }
@@ -135,7 +137,25 @@ public class TestUtil {
 
     public static List<String> getLayoutTitle() {
         List<String> titleList = new ArrayList<>();
+        initLayoutTitle();
+//        for (String title : layoutTitle.keySet()) {
+//            titleList.add(title);
+//        }
+        titleList.add("浮动布局");
+        for (Map.Entry<String, String> entry : layoutTitle.entrySet()) {
+            if (!entry.getKey().equals("浮动布局")) {
+                titleList.add(entry.getKey());
+            }
+        }
+        return titleList;
+    }
+
+    public static void initLayoutTitle() {
+        if (layoutTitle != null) {
+            return;
+        }
         layoutTitle = new HashMap<>();
+        layoutTitle.put("自定义绘制", "11");
         layoutTitle.put("通讯录", "10");
         layoutTitle.put("表单填报", "9");
         layoutTitle.put("进度条", "8");
@@ -145,16 +165,7 @@ public class TestUtil {
         layoutTitle.put("富文本", "4");
         layoutTitle.put("中文名跨行", "3");
         layoutTitle.put("自定义键盘", "2");
-
-//        for (String title : layoutTitle.keySet()) {
-//            titleList.add(title);
-//        }
-        titleList.add("浮动布局");
-        for (Map.Entry<String, String> entry : layoutTitle.entrySet()) {
-            titleList.add(entry.getKey());
-        }
         layoutTitle.put("浮动布局", "1");
-        return titleList;
     }
 
 }

@@ -8,6 +8,7 @@
     <string name="activity_draw_line">绘制</string>
     <string name="activity_voice_record">语音</string>
     <string name="activity_journal_analysis">博能日志解析</string>
+    <string name="activity_fill_blank">填空题</string>
     <string name="activity_currency">通用</string>
 
     <!-- 登录 -->
@@ -35,7 +36,7 @@
     <string name="navigation_drawer_close">关闭</string>
     <string name="nav_menu1">王者荣耀</string>
     <string name="nav_menu2">多彩功能</string>
-    <string name="nav_menu3">日志解析</string>
+    <string name="nav_menu3">其它功能</string>
     <string name="nav_menu4">浮动布局</string>
     <string name="about_us">关于我们</string>
     <string name="nav_feedback">意见反馈</string>
@@ -74,4 +75,16 @@
     <string name="cancel">取消</string>
     <string name="undo">撤消</string>
 
+    <!-- 自定义绘制 -->
+    <string name="title_draw_color">背景色</string>
+    <string name="title_draw_circle">圆</string>
+    <string name="title_draw_rect">矩形</string>
+    <string name="title_draw_point">点</string>
+    <string name="title_draw_oval">椭圆()</string>
+    <string name="title_draw_line">线条</string>
+    <string name="title_draw_round_rect">圆角矩形</string>
+    <string name="title_draw_arc">扇形</string>
+    <string name="title_draw_path">爱心</string>
+    <string name="title_draw_histogram">直方图</string>
+    <string name="title_draw_pie_chart">饼图</string>
 </resources>

@@ -99,6 +99,9 @@ public class HeadAndFootFragment extends Fragment implements View.OnClickListene
     }
 
     private void save() {
+        save.setFocusable(true);
+        save.setFocusableInTouchMode(true);
+        save.requestFocus();
         StringBuilder sData = new StringBuilder();
         sData.append("值班人：" + name.getText().toString());
         sData.append("\n巡检时间：" + time.getText().toString());

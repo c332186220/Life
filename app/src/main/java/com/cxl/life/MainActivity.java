@@ -34,6 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.cxl.life.app.OtherActivity;
 import com.cxl.life.app.effect.JdActivity;
 import com.cxl.life.app.function.FunctionActivity;
 import com.cxl.life.app.layout.LayoutMainActivity;
@@ -157,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(this, FunctionActivity.class));
                 break;
             case R.id.nav_menu3:
-                startActivity(new Intent(this, JournalActivity.class));
+                startActivity(new Intent(this, OtherActivity.class));
                 break;
             case R.id.nav_menu4:
                 startActivity(new Intent(this, LayoutMainActivity.class));

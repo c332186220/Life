@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.cxl.life.R;
 import com.cxl.life.bean.FormData;
 import com.cxl.life.dialog.FilterPopWindow;
+import com.cxl.life.util.L;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class HeadFootAdapter extends RecyclerView.Adapter<HeadFootAdapter.MyHold
 
     private RecyclerView mRecyclerView;
 
-    private List<FormData> data = new ArrayList<>();
+    private List<FormData> data;
     private Context mContext;
 
     private View VIEW_FOOTER;
@@ -65,13 +66,15 @@ public class HeadFootAdapter extends RecyclerView.Adapter<HeadFootAdapter.MyHold
             if (haveHeaderView()) position--;
             TextView content = (TextView) holder.itemView.findViewById(R.id.item_form_title);
             TextView item3 = (TextView) holder.itemView.findViewById(R.id.item_form_tv3);
-            final EditText item1 = (EditText) holder.itemView.findViewById(R.id.item_form_edit1);
-            final EditText item2 = (EditText) holder.itemView.findViewById(R.id.item_form_edit2);
+            EditText item1 = (EditText) holder.itemView.findViewById(R.id.item_form_edit1);
+            EditText item2 = (EditText) holder.itemView.findViewById(R.id.item_form_edit2);
             FormData fd = data.get(position);
             content.setText(fd.getLOOP_NAME());
             item3.setText(fd.getLIGHT_GRADE());
-            item1.setText(TextUtils.isEmpty(fd.getFIRST_VALUE()) ? "" : fd.getFIRST_VALUE());
-            item2.setText(TextUtils.isEmpty(fd.getSECOND_VALUE()) ? "" : fd.getSECOND_VALUE());
+//            item1.setText(TextUtils.isEmpty(fd.getFIRST_VALUE()) ? "" : fd.getFIRST_VALUE());
+//            item2.setText(TextUtils.isEmpty(fd.getSECOND_VALUE()) ? "" : fd.getSECOND_VALUE());
+            item1.setText(fd.getFIRST_VALUE());
+            item2.setText(fd.getSECOND_VALUE());
             final int finalPosition = position;
             item3.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -80,48 +83,41 @@ public class HeadFootAdapter extends RecyclerView.Adapter<HeadFootAdapter.MyHold
                 }
             });
 
-            item1.setTag(fd);
-            item1.addTextChangedListener(new TextWatcher() {
+            L.e("bianlitie:   "+finalPosition);
 
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    FormData fd = (FormData) item1.getTag();
-                    fd.setFIRST_VALUE(s.toString());
-                }
-
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-
-                public void afterTextChanged(Editable s) {
-                }
-            });
+//            item1.setTag(finalPosition);
+//            item1.addTextChangedListener(new TextWatcher() {
+//
+//                public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//                }
+//
+//                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//                }
+//
+//                public void afterTextChanged(Editable s) {
+//                    int fd = (int) item1.getTag();
+//                    data.get(fd).setFIRST_VALUE(s.toString());
+//                    L.e("bianli:   "+fd+" value   "+s.toString());
+//                }
+//            });
             item1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus) {
-//                        data.get(finalPosition).setFIRST_VALUE(((EditText) v).getText().toString());
+                        String value =((EditText) v).getText().toString();
+                        data.get(finalPosition).setFIRST_VALUE(value);
+                        L.e("bianli:   "+finalPosition+" value   "+value);
                         //失去焦点查库，判断是否超过上限或者低于下限
                     }
-                }
-            });
-            item2.setTag(fd);
-            item2.addTextChangedListener(new TextWatcher() {
-
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    FormData fd = (FormData) item2.getTag();
-                    fd.setSECOND_VALUE(s.toString());
-                }
-
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-
-                public void afterTextChanged(Editable s) {
                 }
             });
             item2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus) {
-//                        data.get(finalPosition).setSECOND_VALUE(((EditText) v).getText().toString());
+                        String value =((EditText) v).getText().toString();
+                        data.get(finalPosition).setSECOND_VALUE(value);
                         //失去焦点查库，判断是否超过上限或者低于下限
                     }
                 }
@@ -155,11 +151,15 @@ public class HeadFootAdapter extends RecyclerView.Adapter<HeadFootAdapter.MyHold
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
         try {
-            if (mRecyclerView == null && mRecyclerView != recyclerView) {
+            if(mRecyclerView==null){
                 mRecyclerView = recyclerView;
             }
-            ifGridLayoutManager();
+            if (mRecyclerView != null && mRecyclerView != recyclerView) {
+                mRecyclerView = recyclerView;
+            }
+//            ifGridLayoutManager();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -292,27 +292,5 @@ public class HeadFootAdapter extends RecyclerView.Adapter<HeadFootAdapter.MyHold
                 break;
         }
         return ammeter;
-    }
-
-    class MyTextWatcher implements TextWatcher {
-        //由于TextWatcher的afterTextChanged中拿不到对应的position值，所以自己创建一个子类
-        private int mPosition;
-
-        public void updatePosition(int position) {
-            mPosition = position;
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            data.get(mPosition).setFIRST_VALUE(s.toString());
-        }
     }
 }

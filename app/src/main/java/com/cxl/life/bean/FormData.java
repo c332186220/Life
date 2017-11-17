@@ -9,8 +9,8 @@ public class FormData {
 
     private String padId; //主键id
     private String LOOP_NAME; //回路名称
-    private String FIRST_VALUE; //第一个值
-    private String SECOND_VALUE; //第二个值
+    private String FIRST_VALUE=""; //第一个值
+    private String SECOND_VALUE=""; //第二个值
     private String LIGHT_GRADE; //光级
     private String PART; //所属分块
     private String OID; //记录表主键
