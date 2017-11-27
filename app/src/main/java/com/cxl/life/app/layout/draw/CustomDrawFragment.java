@@ -28,6 +28,26 @@ public class CustomDrawFragment extends Fragment {
     List<PageModel> pageModels = new ArrayList<>();
 
     {
+        pageModels.add(new PageModel(R.string.title_draw_text, R.layout.practice_draw_text));
+        pageModels.add(new PageModel(R.string.title_get_font_spacing, R.layout.practice_get_font_spacing));
+
+        pageModels.add(new PageModel(R.string.title_linear_gradient, R.layout.paint_practice_linear_gradient));
+        pageModels.add(new PageModel(R.string.title_radial_gradient, R.layout.paint_practice_radial_gradient));
+        pageModels.add(new PageModel(R.string.title_sweep_gradient, R.layout.paint_practice_sweep_gradient));
+        pageModels.add(new PageModel(R.string.title_bitmap_shader, R.layout.paint_practice_bitmap_shader));
+        pageModels.add(new PageModel(R.string.title_compose_shader, R.layout.paint_practice_compose_shader));
+        pageModels.add(new PageModel(R.string.title_lighting_color_filter, R.layout.paint_practice_lighting_color_filter));
+        pageModels.add(new PageModel(R.string.title_color_matrix_color_filter, R.layout.paint_practice_color_matrix_color_filter));
+        pageModels.add(new PageModel(R.string.title_xfermode, R.layout.paint_practice_xfermode));
+        pageModels.add(new PageModel(R.string.title_stroke_cap, R.layout.paint_practice_stroke_cap));
+        pageModels.add(new PageModel(R.string.title_stroke_join, R.layout.paint_practice_stroke_join));
+        pageModels.add(new PageModel(R.string.title_stroke_miter, R.layout.paint_practice_stroke_miter));
+        pageModels.add(new PageModel(R.string.title_path_effect, R.layout.paint_practice_path_effect));
+        pageModels.add(new PageModel(R.string.title_shader_layer, R.layout.paint_practice_shadow_layer));
+        pageModels.add(new PageModel(R.string.title_mask_filter, R.layout.paint_practice_mask_filter));
+        pageModels.add(new PageModel(R.string.title_fill_path, R.layout.paint_practice_fill_path));
+        pageModels.add(new PageModel(R.string.title_text_path, R.layout.paint_practice_text_path));
+
         pageModels.add(new PageModel(R.string.title_draw_color, R.layout.draw_practice_color));
         pageModels.add(new PageModel(R.string.title_draw_circle, R.layout.draw_practice_circle));
         pageModels.add(new PageModel(R.string.title_draw_rect, R.layout.draw_practice_rect));

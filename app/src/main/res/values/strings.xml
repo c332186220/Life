@@ -87,4 +87,24 @@
     <string name="title_draw_path">爱心</string>
     <string name="title_draw_histogram">直方图</string>
     <string name="title_draw_pie_chart">饼图</string>
+
+    <string name="title_linear_gradient">线性渐变</string>
+    <string name="title_radial_gradient">辐射渐变</string>
+    <string name="title_sweep_gradient">扫描渐变</string>
+    <string name="title_bitmap_shader">Bitmap着色</string>
+    <string name="title_compose_shader">混合着色</string>
+    <string name="title_lighting_color_filter">颜色过滤</string>
+    <string name="title_color_matrix_color_filter">去饱和度</string>
+    <string name="title_xfermode">混合计算</string>
+    <string name="title_stroke_cap">线头</string>
+    <string name="title_stroke_join">拐角</string>
+    <string name="title_stroke_miter">拐角补偿</string>
+    <string name="title_path_effect">圆拐角</string>
+    <string name="title_shader_layer">加阴影</string>
+    <string name="title_mask_filter">模糊效果</string>
+    <string name="title_fill_path">实际路径</string>
+    <string name="title_text_path">文字路径</string>
+
+    <string name="title_draw_text">文本绘制</string>
+    <string name="title_get_font_spacing">文字间距</string>
 </resources>
