@@ -2,6 +2,7 @@ package com.cxl.life.util;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
@@ -142,5 +143,13 @@ public class ScreenUtil {
     public static int spTopx(Context context, float spVal) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
                 spVal, context.getResources().getDisplayMetrics());
+    }
+
+    /**
+     * dp转px
+     */
+    public static float dpToPixel(float dp) {
+        DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
+        return dp * metrics.density;
     }
 }

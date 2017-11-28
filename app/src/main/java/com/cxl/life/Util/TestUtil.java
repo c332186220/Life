@@ -155,6 +155,7 @@ public class TestUtil {
             return;
         }
         layoutTitle = new HashMap<>();
+        layoutTitle.put("动画绘制", "12");
         layoutTitle.put("自定义绘制", "11");
         layoutTitle.put("通讯录", "10");
         layoutTitle.put("表单填报", "9");

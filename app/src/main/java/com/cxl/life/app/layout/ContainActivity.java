@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 
 import com.cxl.life.R;
+import com.cxl.life.app.layout.animal.CustomAnimalFragment;
 import com.cxl.life.app.layout.draw.CustomDrawFragment;
 import com.cxl.life.util.TestUtil;
 
@@ -98,6 +99,11 @@ public class ContainActivity extends AppCompatActivity {
                 break;
             case "11":
                 fragment = new CustomDrawFragment();
+                transaction.replace(R.id.contain_fl, fragment);
+                transaction.commit();
+                break;
+            case "12":
+                fragment = new CustomAnimalFragment();
                 transaction.replace(R.id.contain_fl, fragment);
                 transaction.commit();
                 break;

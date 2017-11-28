@@ -107,4 +107,57 @@
 
     <string name="title_draw_text">文本绘制</string>
     <string name="title_get_font_spacing">文字间距</string>
+
+    <string name="title_clip_rect">裁剪</string>
+    <string name="title_clip_path">路径裁剪</string>
+    <string name="title_translate">画布移动</string>
+    <string name="title_scale">画布缩放</string>
+    <string name="title_rotate">画布旋转</string>
+    <string name="title_skew">错切</string>
+    <string name="title_matrix_translate">矩阵变换</string>
+    <string name="title_camera_rotate">三维旋转</string>
+    <string name="title_camera_rotate_fixed">修正版</string>
+    <string name="title_camera_rotate_hitting_face">糊脸修正</string>
+    <string name="title_flipboard">翻页效果</string>
+
+    <string name="title_after_on_draw">后插</string>
+    <string name="title_before_on_draw">前插</string>
+    <string name="title_on_draw_layout">布局后插</string>
+    <string name="title_after_on_draw_foreground">onDrawForeground()-后插</string>
+    <string name="title_before_draw">draw()前插</string>
+    <string name="hello">Hello HenCoder</string>
+    <string name="about_hencoder">HenCoder 是\n针对高级 Android 工程师\n的进阶手册\n旨在突破高手们最基础的技能瓶颈\n结束止步不前的状态，继续快速提升\n内容难度上也许对新手不够友好\n只能说句得罪了\n我个人水平有限\n照顾不到所有人</string>
+    <string name="image_size">尺寸：%1$d x %2$d</string>
+    <string name="princess_girl">魔法公主</string>
+
+    <string name="title_translation">平移动画</string>
+    <string name="title_rotation">旋转动画</string>
+    <string name="title_animal_scale">伸缩动画</string>
+    <string name="title_alpha">渐变动画</string>
+    <string name="title_multi_properties">多属性</string>
+    <string name="title_duration">动画时长</string>
+    <string name="title_interpolator">setInterpolator()</string>
+    <string name="title_object_animator">ObjectAnimator</string>
+    <string name="batman">Batman</string>
+    <string name="duration">Duration</string>
+    <string name="ms_with_value">%dms</string>
+    <string name="interpolator">Interpolator</string>
+    <string name="animate">animate</string>
+    <string name="title_object_animator_multi_float">ObjectAnimator.ofMultiFloat()</string>
+    <string name="api_lower_than_21">API 21 及更高版本才支持这个，换个高版本的设备再试吧</string>
+    <string-array name="interpolators">
+        <item>AccelerateDecelerateInterpolator</item>
+        <item>LinearInterpolator</item>
+        <item>AccelerateInterpolator</item>
+        <item>DecelerateInterpolator</item>
+        <item>AnticipateInterpolator</item>
+        <item>OvershootInterpolator</item>
+        <item>AnticipateOvershootInterpolator</item>
+        <item>BounceInterpolator</item>
+        <item>CycleInterpolator</item>
+        <item>PathInterpolator</item>
+        <item>FastOutLinearInInterpolator</item>
+        <item>FastOutSlowInInterpolator</item>
+        <item>LinearOutSlowInInterpolator</item>
+    </string-array>
 </resources>

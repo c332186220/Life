@@ -28,9 +28,27 @@ public class CustomDrawFragment extends Fragment {
     List<PageModel> pageModels = new ArrayList<>();
 
     {
+
+        pageModels.add(new PageModel(R.string.title_after_on_draw, R.layout.practice_after_on_draw));
+        pageModels.add(new PageModel(R.string.title_before_on_draw, R.layout.practice_before_on_draw));
+        pageModels.add(new PageModel(R.string.title_on_draw_layout, R.layout.practice_on_draw_layout));
+        pageModels.add(new PageModel(R.string.title_after_on_draw_foreground, R.layout.practice_after_on_draw_foreground));
+        pageModels.add(new PageModel(R.string.title_before_draw, R.layout.practice_before_draw));
+        //各种图形裁剪移动旋转等
+        pageModels.add(new PageModel(R.string.title_clip_rect, R.layout.practice_clip_rect));
+        pageModels.add(new PageModel(R.string.title_clip_path, R.layout.practice_clip_path));
+        pageModels.add(new PageModel(R.string.title_translate, R.layout.practice_translate));
+        pageModels.add(new PageModel(R.string.title_scale, R.layout.practice_scale));
+        pageModels.add(new PageModel(R.string.title_rotate, R.layout.practice_rotate));
+        pageModels.add(new PageModel(R.string.title_matrix_translate, R.layout.practice_matrix_translate));
+        pageModels.add(new PageModel(R.string.title_camera_rotate, R.layout.practice_camera_rotate));
+        pageModels.add(new PageModel(R.string.title_camera_rotate_fixed, R.layout.practice_measure_text));
+        pageModels.add(new PageModel(R.string.title_camera_rotate_hitting_face, R.layout.practice_camera_rotate_hitting_face));
+        pageModels.add(new PageModel(R.string.title_flipboard, R.layout.practice_flipboard));
+        //文字绘制
         pageModels.add(new PageModel(R.string.title_draw_text, R.layout.practice_draw_text));
         pageModels.add(new PageModel(R.string.title_get_font_spacing, R.layout.practice_get_font_spacing));
-
+        //色调绘制
         pageModels.add(new PageModel(R.string.title_linear_gradient, R.layout.paint_practice_linear_gradient));
         pageModels.add(new PageModel(R.string.title_radial_gradient, R.layout.paint_practice_radial_gradient));
         pageModels.add(new PageModel(R.string.title_sweep_gradient, R.layout.paint_practice_sweep_gradient));
@@ -47,7 +65,7 @@ public class CustomDrawFragment extends Fragment {
         pageModels.add(new PageModel(R.string.title_mask_filter, R.layout.paint_practice_mask_filter));
         pageModels.add(new PageModel(R.string.title_fill_path, R.layout.paint_practice_fill_path));
         pageModels.add(new PageModel(R.string.title_text_path, R.layout.paint_practice_text_path));
-
+        //基本图形绘制
         pageModels.add(new PageModel(R.string.title_draw_color, R.layout.draw_practice_color));
         pageModels.add(new PageModel(R.string.title_draw_circle, R.layout.draw_practice_circle));
         pageModels.add(new PageModel(R.string.title_draw_rect, R.layout.draw_practice_rect));
