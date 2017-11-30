@@ -10,6 +10,7 @@ import android.widget.GridView;
 
 import com.cxl.life.R;
 import com.cxl.life.adapter.MenuAdapter;
+import com.cxl.life.app.function.custom.CustomActivity;
 import com.cxl.life.app.function.download.DownloadActivity;
 import com.cxl.life.app.function.permission.PermissionActivity;
 import com.cxl.life.app.function.popup.PopupWindowActivity;
@@ -52,6 +53,7 @@ public class FunctionActivity extends AppCompatActivity {
         list.add(new MenuData(R.mipmap.function_download, "多线程下载", "5"));
         list.add(new MenuData(R.mipmap.function_permission, "权限管理", "6"));
         list.add(new MenuData(R.mipmap.function_fill_blank, "填空题", "7"));
+        list.add(new MenuData(R.mipmap.function_custom, "方图", "8"));
 
         MenuAdapter adapter = new MenuAdapter(this, list);
         menuGv.setAdapter(adapter);
@@ -79,6 +81,9 @@ public class FunctionActivity extends AppCompatActivity {
                         break;
                     case "7"://填空
                         startActivity(new Intent(FunctionActivity.this, FillBlankActivity.class));
+                        break;
+                    case "8"://方图
+                        startActivity(new Intent(FunctionActivity.this, CustomActivity.class));
                         break;
 
                 }

@@ -29,7 +29,14 @@ public class CustomAnimalFragment extends Fragment {
     List<PageModel> pageModels = new ArrayList<>();
 
     {
-
+        //复杂动画，主要是一些动画的结合使用
+        pageModels.add(new PageModel(R.string.title_argb_evaluator, R.layout.practice_argb_evaluator));
+        pageModels.add(new PageModel(R.string.title_hsv_evaluator, R.layout.practice_hsv_evaluator));
+        pageModels.add(new PageModel(R.string.title_of_object, R.layout.practice_of_object));
+        pageModels.add(new PageModel(R.string.title_property_values_holder, R.layout.practice_property_values_holder));
+        pageModels.add(new PageModel(R.string.title_animator_set, R.layout.practice_animator_set));
+        pageModels.add(new PageModel(R.string.title_keyframe, R.layout.practice_keyframe));
+        //简单动画  一些基础
         pageModels.add(new PageModel(R.string.title_translation, R.layout.practice_translation));
         pageModels.add(new PageModel(R.string.title_rotation, R.layout.practice_rotation));
         pageModels.add(new PageModel(R.string.title_animal_scale, R.layout.practice_animal_scale));

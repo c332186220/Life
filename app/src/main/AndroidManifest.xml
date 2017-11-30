@@ -178,6 +178,7 @@
             android:label="@string/activity_fill_blank"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".app.function.custom.CustomActivity"></activity>
     </application>
 
 </manifest>
