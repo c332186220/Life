@@ -3,7 +3,6 @@ package com.cxl.life.base;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.content.ContextCompat;
@@ -17,10 +16,13 @@ import android.widget.Toast;
 
 import com.cxl.life.MainActivity;
 import com.cxl.life.R;
+import com.cxl.life.util.Constants;
+import com.cxl.life.util.TUtil;
 import com.cxl.life.util.TimeUtil;
 import com.cxl.life.widget.SnowView;
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -33,26 +35,74 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     private RelativeLayout welcome;//背景
     private TextView start;//启动
 
-    private Handler handler = new Handler() {
+    private final MyHandler myHandler = new MyHandler(this);
+
+    private static class MyHandler extends Handler{
+        private final WeakReference<WelcomeActivity> mActivity;
+
+        private MyHandler(WelcomeActivity mActivity) {
+            this.mActivity = new WeakReference<>(mActivity);
+        }
+
         @Override
         public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 1:
-                    Toast.makeText(WelcomeActivity.this, "访问失败", Toast.LENGTH_SHORT).show();
-                    break;
-                case 2:
-                    Toast.makeText(WelcomeActivity.this, "访问成功", Toast.LENGTH_SHORT).show();
-                    initNetWork();
-                    break;
-                case 3:
-                    start.setBackgroundResource(R.drawable.item_top_title_press);
-                    start.setTextColor(ContextCompat.getColor(WelcomeActivity.this, R.color.white));
-                    start.setText("点我启动");
-                    start.setOnClickListener(WelcomeActivity.this);
-                    break;
+            super.handleMessage(msg);
+            WelcomeActivity activity = mActivity.get();
+            if(activity!=null){
+                switch (msg.what){
+                    case 1:
+                        Toast.makeText(activity, "访问失败", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 2:
+                        Toast.makeText(activity, "访问成功", Toast.LENGTH_SHORT).show();
+                        activity.initNetWork();
+                        break;
+                    case 3:
+                        activity.start.setBackgroundResource(R.drawable.item_top_title_press);
+                        activity.start.setTextColor(ContextCompat.getColor(activity, R.color.white));
+                        activity.start.setText("点我启动");
+                        activity.start.setOnClickListener(activity);
+                        break;
+                    case 4:
+                        activity.startActivity(new Intent(activity, MainActivity.class));
+                        activity.finish();
+                        break;
+                }
+            }
+        }
+    }
+
+    private static final Runnable sRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if(!TUtil.getBoolean(Constants.SP_fIRST_ENTRY,true)){
+
+            }else{
+
             }
         }
     };
+
+//    private Handler handler = new Handler() {
+//        @Override
+//        public void handleMessage(Message msg) {
+//            switch (msg.what) {
+//                case 1:
+//                    Toast.makeText(WelcomeActivity.this, "访问失败", Toast.LENGTH_SHORT).show();
+//                    break;
+//                case 2:
+//                    Toast.makeText(WelcomeActivity.this, "访问成功", Toast.LENGTH_SHORT).show();
+//                    initNetWork();
+//                    break;
+//                case 3:
+//                    start.setBackgroundResource(R.drawable.item_top_title_press);
+//                    start.setTextColor(ContextCompat.getColor(WelcomeActivity.this, R.color.white));
+//                    start.setText("点我启动");
+//                    start.setOnClickListener(WelcomeActivity.this);
+//                    break;
+//            }
+//        }
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +115,12 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void run() {
-                handler.sendEmptyMessage(3);
+                if(TUtil.getBoolean(Constants.SP_fIRST_ENTRY,true)){
+                    myHandler.sendEmptyMessage(3);
+                    TUtil.putBoolean(Constants.SP_fIRST_ENTRY,false);
+                }else{
+                    myHandler.sendEmptyMessage(4);
+                }
             }
         }, 1000);
         welcome = (RelativeLayout) findViewById(R.id.activity_welcome);
@@ -74,7 +129,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         //根据季节加载不同的背景
         switch (TimeUtil.getCurrentMonth()) {
             case 11:
-            case 12:
+            case 0:
             case 1:
                 welcome.setBackgroundResource(R.mipmap.welcome_winter_bg);
                 snow.loadFlower(R.drawable.ic_flow_winter);
@@ -110,12 +165,12 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                handler.sendEmptyMessage(1);
+                myHandler.sendEmptyMessage(1);
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                handler.sendEmptyMessage(2);
+                myHandler.sendEmptyMessage(2);
             }
         });
     }

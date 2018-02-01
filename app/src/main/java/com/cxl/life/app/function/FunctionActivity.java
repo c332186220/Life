@@ -12,6 +12,7 @@ import com.cxl.life.R;
 import com.cxl.life.adapter.MenuAdapter;
 import com.cxl.life.app.function.custom.CustomActivity;
 import com.cxl.life.app.function.download.DownloadActivity;
+import com.cxl.life.app.function.location.LocationActivity;
 import com.cxl.life.app.function.permission.PermissionActivity;
 import com.cxl.life.app.function.popup.PopupWindowActivity;
 import com.cxl.life.app.function.vp.VpTitleActivity;
@@ -54,6 +55,8 @@ public class FunctionActivity extends AppCompatActivity {
         list.add(new MenuData(R.mipmap.function_permission, "权限管理", "6"));
         list.add(new MenuData(R.mipmap.function_fill_blank, "填空题", "7"));
         list.add(new MenuData(R.mipmap.function_custom, "方图", "8"));
+        list.add(new MenuData(R.mipmap.function_location, "原生定位", "9"));
+        list.add(new MenuData(R.mipmap.function_video, "播放视频", "10"));
 
         MenuAdapter adapter = new MenuAdapter(this, list);
         menuGv.setAdapter(adapter);
@@ -85,7 +88,12 @@ public class FunctionActivity extends AppCompatActivity {
                     case "8"://方图
                         startActivity(new Intent(FunctionActivity.this, CustomActivity.class));
                         break;
-
+                    case "9"://原生定位
+                        startActivity(new Intent(FunctionActivity.this, LocationActivity.class));
+                        break;
+                    case "10"://播放视频
+                        startActivity(new Intent(FunctionActivity.this, VideoActivity.class));
+                        break;
                 }
             }
         });

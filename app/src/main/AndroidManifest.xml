@@ -178,7 +178,9 @@
             android:label="@string/activity_fill_blank"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".app.function.custom.CustomActivity"></activity>
+        <activity android:name=".app.function.custom.CustomActivity" />
+        <activity android:name=".app.function.location.LocationActivity" />
+        <activity android:name=".app.function.VideoActivity"/>
     </application>
 
 </manifest>

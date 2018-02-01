@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import com.cxl.life.util.CrashHandler;
 import com.cxl.life.util.L;
 import com.cxl.life.app.BaseActivity;
+import com.cxl.life.util.TUtil;
 import com.cxl.life.util.ToastUtil;
 
 import org.litepal.LitePalApplication;
@@ -24,6 +25,7 @@ public class LifeApplication extends LitePalApplication {
         ToastUtil.init(this);//初始化toast
         //异常日志捕获
         CrashHandler.getInstance().init(this);
+        new TUtil().init(this);
     }
 
     @Override

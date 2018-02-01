@@ -281,8 +281,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            Bundle bundle = intent.getExtras();
-            refresh(bundle.getString("message"));
+//            if (intent.getAction()!=null&&intent.getAction().equals(Constants.LOCATION_ACTION)){
+//                String latitude = intent.getStringExtra(Constants.LOCATION_LATITUDE);
+//                String longitude = intent.getStringExtra(Constants.LOCATION_LONGITUDE);
+//            }else {
+                Bundle bundle = intent.getExtras();
+                refresh(bundle.getString("message"));
+//            }
         }
     }
 
@@ -295,7 +300,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      */
     private void startBroadcast() {
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("com.cxl.life.REFRESH_CONTENT");
+        intentFilter.addAction(Constants.SERVICE_ACTION);//广播名
         receiver = new RefreshReceiver();
         registerReceiver(receiver, intentFilter);
     }

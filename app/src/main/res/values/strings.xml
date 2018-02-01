@@ -11,6 +11,8 @@
     <string name="activity_fill_blank">填空题</string>
     <string name="activity_currency">通用</string>
     <string name="activity_custom">自定义布局</string>
+    <string name="activity_location">原生定位</string>
+    <string name="activity_video_play">视频播放</string>
 
     <!-- 登录 -->
     <string name="prompt_account">账户</string>
